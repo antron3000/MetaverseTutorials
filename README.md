@@ -27,6 +27,11 @@ Install the metaverse npm package
 npm install -g metaversejs --save
 ```
 
+Install the mvs-blockchain-js npm package
+```
+cd mvs-blockchain-js && npm install
+```
+
 
 Each tutorial is self-contained, so you can do them separately.
 
