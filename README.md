@@ -26,14 +26,14 @@ These tutorials are designed
 * Show you step by step how to create dApp on Metaverse. Can also be used to integrate into your existing app.
 * provide working examples of what you should have built.
 
-1 - Integrate metaverse wallet into your dapp with your DID .
-2 - Issue and transfer MST’s .
-3 - Issue and transfer MIT’s .
-4 - learn the metaverse command line .
-5 - create metaverse wallet plugin .
-6 - execute coin swaps .
-7 - create multisig transactions .
-8 - understanding Metaverse MIPs . 
+1 - Integrate metaverse wallet into your dapp with your DID  
+2 - Issue and transfer MST’s  
+3 - Issue and transfer MIT’s  
+4 - learn the metaverse command line  
+5 - create metaverse wallet plugin  
+6 - execute coin swaps  
+7 - create multisig transactions  
+8 - understanding Metaverse MIPs  
 
 
 [Metaverse Documentation](https://docs.mvs.org/docs/)
