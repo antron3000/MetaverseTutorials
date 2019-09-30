@@ -15,6 +15,6 @@ let txs = await blockchain.addresses.txs(addresses)
 
 let utxo = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses())
 let balances = await blockchain.balance.all(utxo, wallet.getAddresses(), height)
-console.log(balances.ETP)
+console.log(balances.ETP.available)
 
 }

@@ -2,7 +2,9 @@ Metaverse Tutorial series
 
 This is a series of Metaverse tutorials. To begin clone this repository
 
-'git clone [repo]'.
+'''
+https://github.com/antron3000/MetaverseTutorials.git
+'''
 
 Each tutorial is self-contained, so you can do them separately.
 
@@ -17,7 +19,7 @@ These tutorials are designed
 - hands on
 - explain inner workings and give broad understanding of Metaverse blockchain
 - Show you step by step how to create dApp on Metaverse. Can also be used to integrate into your existing app.
-- provide working examples of what you should have built. 
+- provide working examples of what you should have built.
 
 1 - Integrate metaverse wallet into your dapp with your DID
 2 - Issue and transfer MST’s
