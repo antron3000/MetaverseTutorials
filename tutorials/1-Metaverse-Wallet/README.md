@@ -203,6 +203,13 @@ async function sendETP(amount){
 
 To test your nodejs code, Create a function called run() and make sure it gets executed in the script.
 
+For now, since the metaverse faucet is not operational, use this mnemonic:
+
+```
+var mnemonic = "van juice oak general lyrics gravity hammer shield over eager crew volume survey join lonely purchase kitten artwork mass cousin process mixture add knife"
+
+```
+
 ```
 run()
 
