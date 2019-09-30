@@ -29,7 +29,7 @@ In Metaverse, as with Bitcoin, you can generate deterministic wallets using by m
 Start by setting up a directory to work in
 
 ```
-cd MetaverseTutorials/tutorials/1-Metaverse-Wallet/playground
+cd MetaverseTutorials/tutorials/playground
 touch tut1.html
 touch tut1.js
 ```
