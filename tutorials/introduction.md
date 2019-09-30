@@ -3,7 +3,7 @@ Metaverse Tutorial series
 This is a series of Metaverse tutorials. To begin clone this repository
 
 '''
-https://github.com/antron3000/MetaverseTutorials.git
+git clone https://github.com/antron3000/MetaverseTutorials.git
 '''
 
 Each tutorial is self-contained, so you can do them separately.
