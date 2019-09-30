@@ -24,7 +24,7 @@ git submodule update --init --recursive
 Install the metaverse npm package
 
 ```
-npm install -g metaversejs --save
+npm install metaversejs --save
 ```
 
 Install the mvs-blockchain-js npm package
