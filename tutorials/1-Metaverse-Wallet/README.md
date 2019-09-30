@@ -82,7 +82,7 @@ now open tut1.js. Let's create a nodejs script
 First import mvs-blockchain from the mvs-blockchain folder
 
 ```
-let blockchain = require('../../../mvs-blockchain-js')({let blockchain = require('')({
+let blockchain = require('../../mvs-blockchain-js')({
 
     url: "https://explorer-testnet.mvs.org/api/"
 });
