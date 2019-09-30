@@ -23,7 +23,7 @@ For more information on UTXO's look here https://komodoplatform.com/whats-utxo/
 
 In Metaverse, as with Bitcoin, you can generate deterministic wallets using by memnonic code words. This gives you multiple addresses you can send and recieve transactions from.
 
-##Hands on Tutorial
+## Hands on Tutorial
 
 Start by setting up a directory to work in
 
@@ -200,7 +200,7 @@ async function sendETP(amount){
 ```
 
 
-
+## Connect to Dapp
 
 To interact with metaversejs in your webapp, you need to reference metaversejs in your HTML.
 
