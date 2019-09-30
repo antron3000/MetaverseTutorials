@@ -15,7 +15,6 @@ async function generateMnemonic(){
 
 async function createWallet() {
   wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')
-
   addresses = await getAddresses()
 }
 

@@ -1,9 +1,10 @@
 In this tutorial you will learn how to
 
-1. create a Metaverse wallet
-2. Integrate wallet into your dapp
-3. Send transactions programatically
-4. Create a metaverse Avatar
+* Create a Metaverse wallet
+* Import an Existing wallet
+* Check your ETP balance
+* Send transactions programatically
+* Integrate wallet into your dApp
 
 ### Introduction
 
@@ -23,7 +24,7 @@ For more information on UTXO's look here https://komodoplatform.com/whats-utxo/
 
 In Metaverse, as with Bitcoin, you can generate deterministic wallets using by memnonic code words. This gives you multiple addresses you can send and recieve transactions from.
 
-## Hands on Tutorial
+### Hands on Tutorial
 
 Start by setting up a directory to work in
 
