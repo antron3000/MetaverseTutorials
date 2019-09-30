@@ -13,7 +13,7 @@ git clone https://github.com/antron3000/MetaverseTutorials.git
 Install the metaverse npm package
 
 ```
-npm install -g metaversjs --save
+npm install -g metaversejs --save
 ```
 
 
