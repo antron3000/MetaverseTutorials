@@ -124,7 +124,7 @@ And a function to create a Wallet from the mnemonic, using the testnet keyword s
 async function createWallet(){
   wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')
 
-  addresses = await getAddresses()  // get list of addresses
+  addresses = await wallet.getAddresses()  // get list of addresses
 }
 ```
 Once you've created a wallet you must get some testnet ETP from the testnet faucet.
