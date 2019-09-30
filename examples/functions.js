@@ -1,4 +1,5 @@
-let blockchain = require('../..')({
+let blockchain = require('../../mvs-blockchain-js')({let blockchain = require('')({
+
     url: "https://explorer-testnet.mvs.org/api/"
 });
 let Metaverse = require('metaversejs');
@@ -14,7 +15,6 @@ async function run(){
   console.log("Getting Addresses..............")
   await createWallet()
   console.log(addresses)
-
 
   console.log("Getting Balances..............")
   balances = await getBalances()

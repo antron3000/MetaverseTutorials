@@ -11,10 +11,8 @@ var mnemonic = "van juice oak general lyrics gravity hammer shield over eager cr
 let symbol = "testar"
 let avatar = "testguy"
 let content = "some test content"
-createMIT()
-async function createMIT(){
-
-
+issueMIT()
+async function issueMIT(){
 
 let wallet = await Metaverse.wallet.fromMnemonic(mnemonic, 'testnet')
 wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')

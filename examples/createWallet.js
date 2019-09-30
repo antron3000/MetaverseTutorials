@@ -1,4 +1,4 @@
-let blockchain = require('..')({
+let blockchain = require('../mvs-blockchain-js')({
     url: "https://explorer-testnet.mvs.org/api/"
 });
 let Metaverse = require('metaversejs');
