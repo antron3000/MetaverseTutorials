@@ -5,6 +5,8 @@ In this tutorial you will learn how to
 3. Send transactions programatically
 4. Create a metaverse Avatar
 
+##Introduction**
+
 Metaverse is a UTXO based blockchain
 
 ETP is the native currency of the Metaverse blockchain. To send and receive ETP you need a Metaverse wallet.
@@ -21,7 +23,7 @@ For more information on UTXO's look here https://komodoplatform.com/whats-utxo/
 
 In Metaverse, as with Bitcoin, you can generate deterministic wallets using by memnonic code words. This gives you multiple addresses you can send and recieve transactions from.
 
-Hands on Tutorial
+##Hands on Tutorial
 
 Start by setting up a directory to work in
 
