@@ -6,11 +6,8 @@ In this tutorial you will learn how to
 4. Create a metaverse Avatar
 
 Metaverse is a UTXO based blockchain
-transactions, transaction fee, utxo, mnemonics, ETP
 
 ETP is the native currency of the Metaverse blockchain. To send and receive ETP you need a Metaverse wallet.
-
-Key concepts in this tutorial:
 
 ETP uses a UTXO based model. This means it is very close to the way Bitcoin works.
 
@@ -28,18 +25,18 @@ Hands on Tutorial
 
 Start by setting up a directory to work in
 
-'''
+```
 cd MetaverseTutorials/tutorials/1-Metaverse-Wallet/playground
 touch tut1.html
 touch tut1.js
-
-'''
+```
 
 Create front end
 
 Open tut1.html and use this HTML front end as the base of your app.
 
-'''<<!DOCTYPE html>
+```
+<<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -73,63 +70,65 @@ Open tut1.html and use this HTML front end as the base of your app.
 
   </body>
 </html>
-'''
+```
 
+**Interact with metaverse via nodejs**
 
-now open tut1.js
+now open tut1.js. Let's create a nodejs script
 
- mvs-blockchain from the mvs-blockchain folder
+First import mvs-blockchain from the mvs-blockchain folder
 
-'''
+```
 let blockchain = require('../../../mvs-blockchain-js')({let blockchain = require('')({
 
     url: "https://explorer-testnet.mvs.org/api/"
 });
 
-'''
+```
 
 import metaversejs
 
-'''
+```
 let Metaverse = require('metaversejs');
-'''
+```
 
-Interact with metaverse via nodejs
 
 You should now be set up to use the Metaverse javascript libraries. We are using the async/await syntax. The await keyword can only be used in async functions so we will create async functions to perform all actions.
 
 First lets define some key variables
 
-'''
+```
 var wallet        //An object representing your Metaverse Wallet
 var mnemonic      //A mnemonic code word used to generate your Wallet
 var addresses     //An array containing addresses belonging to the wallet
 var balances      //A JSON object containing Wallet balances
 
-'''
+```
 
 Start by creating a function to generate a new mnemonic
 
-'''
+```
 async function generateMnemonic(){
   mnemonic = await Metaverse.wallet.generateMnemonic()
 }
 
-'''
+```
 
 And a function to create a Wallet from the mnemonic, using the testnet keyword since we're on the testnet.
 
+
+```
 async function createWallet(){
   wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')
 
   addresses = await getAddresses()  // get list of addresses
 }
-
+```
 Once you've created a wallet you must get some testnet ETP from the testnet faucet.
 
 A function to get Wallet balances
 
-'''
+```
 async function getETPBalance(){
 
   //Get the lastest Blockchain Length
@@ -149,11 +148,11 @@ async function getETPBalance(){
 
 }
 
-'''
+```
 
 And Finally a function to send ETP
 
-'''
+```
 
 async function sendETP(amount){
 
@@ -196,31 +195,33 @@ async function sendETP(amount){
   console.log(tx)
 }
 
-'''
+```
 
-NOTE: need to fix
-Connect WebApp
+
+
 
 To interact with metaversejs in your webapp, you need to reference metaversejs in your HTML.
 
-'''
+```
 <script type="text/javascript" src="/dist/metaverse.min.js"></script>
-'''
+```
 
 Also reference your tut1.js file.
 
-'''
+```
 <script type="text/javascript" src="tut1.js"></script>
-'''
+```
 
 Next serve the webpage with
 
-'''
+
+```
 python -m SimpleHTTPServer 3333
-'''
+```
+
 or however you prefer
 
 Verify that you have connected metaverse to the webapp by opening the browser console and typing "Metaverse". You should see the Metaverse object come up and look something like
 
-''' '''
+_TODO: Expand upon once metaversjs referencing is completed_
 Now connect elements to the js functions and youre done!
