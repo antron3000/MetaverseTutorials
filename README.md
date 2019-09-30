@@ -10,6 +10,17 @@ git clone https://github.com/antron3000/MetaverseTutorials.git
 
 ```
 
+navigate to the tutorial directory
+
+```
+cd MetaverseTutorials
+```
+
+update your repo to the latest version of mvs-blockchain-js
+```
+git submodule update --init --recursive
+```
+
 Install the metaverse npm package
 
 ```
