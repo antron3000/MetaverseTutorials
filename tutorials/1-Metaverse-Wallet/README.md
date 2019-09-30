@@ -199,9 +199,33 @@ async function sendETP(amount){
 }
 
 ```
+### Test NodeJS
+
+To test your nodejs code, Create a function called run() and make sure it gets executed in the script.
+
+```
+run()
+
+async function run(){
+  await createWallet()
+
+  let balance = await getETPBalance()
+  console.log("Wallet balance: " + balance + " ETP")
+
+  await sendETP()
+}
+```
+
+now in your terminal run
+
+```
+node tut1.js
+```
+
+You should see an ETP balance, and a transaction hash in your terminal. You can take the transaction hash and view the transaction in the [Metaverse Testnet Blockchain Explorer](https://explorer-testnet.mvs.org/).
 
 
-## Connect to Dapp
+### Connect to Dapp
 
 To interact with metaversejs in your webapp, you need to reference metaversejs in your HTML.
 

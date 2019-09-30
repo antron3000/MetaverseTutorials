@@ -15,7 +15,6 @@ async function registerAvatar(avatar_name,avatar_address) {
 }
 
 async function issueMST(issuer,symbol,max_supply,decimalPrecision,issuer,description){
-
   var recipient_address = issuer;
   var change_address = issuer;
 
@@ -27,9 +26,7 @@ async function issueMST(issuer,symbol,max_supply,decimalPrecision,issuer,descrip
   tx = await wallet.sign(tx)
   tx = await tx.encode()
   console.log(tx.toString('hex'));
-
 }
-
 
 async function transferMST() {
   let height = await blockchain.height()
@@ -40,5 +37,4 @@ async function transferMST() {
   tx = await wallet.sign(tx))
   tx = await tx.encode())
   tx = await blockchain.transaction.broadcast(tx.toString('hex')))
-
 }

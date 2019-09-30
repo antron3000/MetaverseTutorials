@@ -1,14 +1,15 @@
 In this tutorial you will learn how to
 
-1. What an Avatars and MST's are
-2. Register an Avatar
-3. Customize and Issue an MST from your Avatar
-4. Transfer MST's programatically
-5. Integrate MST's into your app
+* Register an Avatar
+* Verify an Avatar against an address
+* Customize and Issue an MST from your Avatar
+* Check your MST Balances
+* Transfer MST's programatically
+* Integrate Avatar and MST functionality into your app
 
 
-Explanation
-(what are Avatars)
+## Introduction
+
 Avatars are digital representations of personal Identities that exist on the Metaverse Blockchain
 Avatars have an alphanumeric symbol.
 Avatars get attached to a Metaverse Address. There can only be one Avatar per address.
@@ -22,7 +23,7 @@ It costs 10 ETP to create an MST. MST's must be issued by an avatar.
 
 Avatar certifications
 
-Hands on:
+## Hands on Tutorial
 
 First lets create an html front end
 
@@ -95,8 +96,6 @@ Create a function to look up an avatar address
 
 ```
 
-
-
 ```
 
 
@@ -160,6 +159,8 @@ async function transferMST() {
 
 ```
 
+### Connect to your dApp
+
 To interact with metaversejs in your webapp, you need to reference metaversejs in your HTML.
 
 ```
@@ -178,6 +179,6 @@ Also reference your tut2.js file.
 
 Verify that you have connected metaverse to the webapp by opening the browser console and typing "Metaverse". You should see the Metaverse object come up and look something like
 
-''' '''
+
 
 Next connect elements to the js functions and youre done!

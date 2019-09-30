@@ -1,7 +1,8 @@
-let blockchain = require('../../mvs-blockchain-js')({let blockchain = require('')({
+let blockchain = require('../../mvs-blockchain-js')({
 
     url: "https://explorer-testnet.mvs.org/api/"
 });
+
 let Metaverse = require('metaversejs');
 
 var wallet
@@ -9,13 +10,24 @@ var mnemonic = "van juice oak general lyrics gravity hammer shield over eager cr
 var addresses
 var balances
 
+run()
+
+async function run(){
+  await createWallet()
+
+  let balance = await getETPBalance()
+  console.log("Wallet balance: " + balance + " ETP")
+
+  await sendETP()
+}
+
 async function generateMnemonic(){
   mnemonic = await Metaverse.wallet.generateMnemonic()
 }
 
 async function createWallet() {
   wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')
-  addresses = await getAddresses()
+  addresses = await wallet.getAddresses()
 }
 
 async function getETPBalance(){

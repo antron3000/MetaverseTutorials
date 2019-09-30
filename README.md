@@ -10,10 +10,16 @@ git clone https://github.com/antron3000/MetaverseTutorials.git
 
 ```
 
+Install the metaverse npm package
+
+```
+npm install -g metaversjs --save
+```
+
 
 Each tutorial is self-contained, so you can do them separately.
 
-If you are a beginner you should begin with Tutorial 1!
+If you are new to Metaverse or blockchain technology you should begin with Tutorial 1
 
 To begin a tutorial navigate to the tutorials folder and follow instructions.
 
