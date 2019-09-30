@@ -16,11 +16,8 @@ async function registerAvatar(avatar_name,avatar_address) {
 
 async function issueMST(issuer,symbol,max_supply,decimalPrecision,issuer,description){
 
-
-
   var recipient_address = issuer;
   var change_address = issuer;
-
 
   let wallet = await Metaverse.wallet.fromMnemonic("lunar there win define minor shadow damage lounge bitter abstract sail alcohol yellow left lift vapor tourist rent gloom sustain gym dry congress zero")
   let txs = await blockchain.addresses.txs(wallet.getAddresses())
@@ -30,7 +27,6 @@ async function issueMST(issuer,symbol,max_supply,decimalPrecision,issuer,descrip
   tx = await wallet.sign(tx)
   tx = await tx.encode()
   console.log(tx.toString('hex'));
-
 
 }
 

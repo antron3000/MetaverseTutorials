@@ -17,7 +17,6 @@ MST's and MIT's can only be issued by Avatars
 
 For more info: https://medium.com/metaverse-blockchain/metaverse-explained-avatars-57be355d42d4
 
-
 MST's are Metaverse Smart Tokens. MST is Metaverse's fungible token standard. MST's can be seen as subcurrencies on the Metaverse Blockchain.
 It costs 10 ETP to create an MST. MST's must be issued by an avatar.
 
@@ -27,7 +26,7 @@ Hands on:
 
 First lets create an html front end
 
-'''
+```
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -66,17 +65,16 @@ First lets create an html front end
     <input placeholder ="sendTo"></input><br>
     <input placeholder = "amount"></input><br>
 
-
   </body>
 </html>
 
-'''
+```
 
 nodejs
 
 Create a function to register your avatar.
 
-'''
+```
 async function registerAvatar(avatar_name,avatar_address) {
 
     let change_address = avatar_address
@@ -91,19 +89,20 @@ async function registerAvatar(avatar_name,avatar_address) {
     tx = await blockchain.transaction.broadcast(tx)
 }
 
-'''
+```
 
 Create a function to look up an avatar address
 
-'''
+```
 
 
-'''
+
+```
 
 
 Create a function to issue an MST
 
-'''
+```
 
 async function issueMST(issuer,symbol,max_supply,decimalPrecision,issuer,description){
 
@@ -124,11 +123,11 @@ async function issueMST(issuer,symbol,max_supply,decimalPrecision,issuer,descrip
 
 }
 
-'''
+```
 
 Create a function to get MST balance
 
-'''
+```
 
 async function getBalances(){
   let wallet = await Metaverse.wallet.fromMnemonic(mnemonic, 'testnet')
@@ -141,12 +140,12 @@ async function getBalances(){
   console.log(balances.MST)
 
 }
-'''
+```
 
 
 Create a function to transfer MST's
 
-'''
+```
 async function transferMST() {
   let height = await blockchain.height()
   let txs = await blockchain.addresses.txs(["tDZ5YMLJ3z6VbvAsX1c8oe9hJ2nND4jszz", "t85Hm2nYwQXrry2cVmEHPq8krRdJ7KYjmq"])
@@ -159,19 +158,23 @@ async function transferMST() {
 
 }
 
-'''
+```
 
 To interact with metaversejs in your webapp, you need to reference metaversejs in your HTML.
 
-'''
+```
+
 <script type="text/javascript" src="/dist/metaverse.min.js"></script>
-'''
+
+```
 
 Also reference your tut2.js file.
 
-'''
+```
+
 <script type="text/javascript" src="tut2.js"></script>
-'''
+
+```
 
 Verify that you have connected metaverse to the webapp by opening the browser console and typing "Metaverse". You should see the Metaverse object come up and look something like
 
