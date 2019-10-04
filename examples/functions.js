@@ -1,4 +1,4 @@
-let blockchain = require('../../mvs-blockchain-js')({let blockchain = require('')({
+let blockchain = require('../mvs-blockchain-js')({
 
     url: "https://explorer-testnet.mvs.org/api/"
 });
@@ -22,7 +22,7 @@ async function run(){
 
   console.log("Sending ETP..............")
   let amountToSend = 10000000
-  await sendETP(amountToSend)
+  //await sendETP(amountToSend)
   console.log("ETP Sent")
 
   console.log("Depositing ETP............")
@@ -32,19 +32,51 @@ async function run(){
   console.log("ETP deposited")
 
   console.log("Registering Avatar............")
-  let avatarName = "testguy2"
+  let avatarName = "testguy3"
   let avatarAddress = wallet.getAddress(0)
-  await registerAvatar(avatarName,avatarAddress)
+  //await registerAvatar(avatarName,avatarAddress)
   console.log("avatar " + avatarName + " Registered to " + avatarAddress)
 
+  console.log("getting Avatar Info......")
+
+  let avatarInfo = await getAvatarInfo("Tal")
+  console.log(avatarInfo)
+
   console.log("Issuing MST.............")
-  let issuingAddress = wallet.getAddress(1),
-      symbol = 'COOL',
+  let issuingAddress = wallet.getAddress(0),
+      symbol = 'COOOL',
       max_supply = 100000,
       precision = 8,
-      issuer = 'testguy',
-      description = 'this is a cool asset';
-  //await issueMST(issuingAddress,max_supply,precision,issuer,description)
+      issuer = 'testguy3',
+      description = 'cool asset is cool';
+  //await issueMST(issuingAddress,symbol,max_supply,precision,issuer,description)
+
+  console.log("Transferring MST.............")
+  var target = {
+      "COOOL": 1
+  };
+  //await sendMST(target)
+  console.log("MST Sent")
+
+
+  console.log("Registering MIT................")
+
+
+  let MITsymbol = "testar2"
+  let avatar = "testguy3"
+  let content = "some test content"
+  //await issueMIT(avatar,MITsymbol,content)
+
+  console.log("MIT Registered")
+
+
+  console.log("Transferring MIT................")
+
+  let MITToSend = "testar"
+  let sender_avatar = "testguy3"
+  let recipient_avatar = "Tal"
+  await sendMIT(sender_avatar,recipient_avatar,MITToSend)
+
 }
 
 
@@ -146,36 +178,107 @@ async function registerAvatar(avatar_name,avatar_address) {
     console.log(tx)
 }
 
-async function issueMST(issuer,symbol,max_supply,decimalPrecision,issuer,description){
+async function issueMST(issuingAddress,symbol,max_supply,precision,issuer,description){
+  console.log("issuingAddress " + issuingAddress)
+  console.log("symbol " + symbol)
+  console.log("max_supply " + max_supply)
+  console.log("precision " + precision)
 
+  console.log("issuer " + issuer)
+  console.log("description " + description)
 
+  var recipient_address = issuingAddress;
+  var change_address = issuingAddress;
 
-  var recipient_address = issuer;
-  var change_address = issuer;
+  let height = await blockchain.height()
+  console.log(issuingAddress)
 
-
-  let wallet = await Metaverse.wallet.fromMnemonic("lunar there win define minor shadow damage lounge bitter abstract sail alcohol yellow left lift vapor tourist rent gloom sustain gym dry congress zero")
   let txs = await blockchain.addresses.txs(wallet.getAddresses())
-  let utxos = await Metaverse.transaction_builder.calculateUtxo(txs.transactions, wallet.getAddresses()) //Get all utxo
-  let result = await Metaverse.transaction_builder.findUtxo(utxos, {}, Metaverse.transaction.ASSET_ISSUE_DEFAULT_FEE) //Collect utxo for given target
-  let tx = await Metaverse.transaction_builder.issue(result.utxo, recipient_address, symbol, max_supply, precision, issuer, description, change_address, result.change)
+  let utxos = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses()) //Get all utxo
+  let result = await Metaverse.output.findUtxo(utxos, {}, height, 1000000000) //Collect utxo to pay for the fee of 10 ETP
+  let tx = await Metaverse.transaction_builder.issueAsset(result.utxo, recipient_address, symbol, max_supply, precision, issuer, description, 0,false, change_address, result.change,true,0,'testnet',null,undefined)
   tx = await wallet.sign(tx)
   tx = await tx.encode()
-  console.log(tx.toString('hex'));
+  tx = await tx.toString('hex')
+  console.log(tx)
+  tx = await blockchain.transaction.broadcast(tx)
 
+  console.log(tx);
+}
+
+async function sendMST(target){
+  let recipient_address = "tEEcN4u8RgcCryQMxJATAxEXsytz6ny2S2"
+  change_address = wallet.getAddress(0)
+  let height = await blockchain.height()
+  let txs = await blockchain.addresses.txs(wallet.getAddresses())
+  let utxos = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses()) //Get all utxo
+  let result = await Metaverse.output.findUtxo(utxos, target, height) //Collect utxo for given target
+  let tx = await Metaverse.transaction_builder.send(result.utxo, recipient_address, undefined, target, change_address, result.change)
+  tx = await wallet.sign(tx)
+  tx = await tx.encode()
+  tx = await blockchain.transaction.broadcast(tx.toString('hex'))
+  console.log(tx)
+}
+
+async function issueMIT(issuer_avatar,symbol,content){
+
+  var target = {
+    ETP: 10000
+  };
+
+  let recipient_address =  wallet.getAddress(0)
+  let change_address = wallet.getAddress(0)
+
+  let height = await blockchain.height()
+  let txs = await blockchain.addresses.txs(wallet.getAddresses())
+  let utxos = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses()) //Get all utxo
+  let result = await Metaverse.output.findUtxo(utxos, {}, height,10000) //Collect utxo to pay fee of 0.0001 ETP
+  let tx = await Metaverse.transaction_builder.registerMIT(result.utxo, recipient_address, issuer_avatar, symbol, content, change_address, result.change)
+  tx = await wallet.sign(tx)
+  tx = await tx.encode()
+  tx = await blockchain.transaction.broadcast(tx.toString('hex'))
+                // .then(tx=>tx.toString('hex'))
+  console.log(tx)
 
 }
 
-async function sendMST(){
+async function sendMIT(sender_avatar,recipient_avatar,symbol){
+
+
+  let recipient_address = getAvatarAddress(recipient_avatar)
+  let change_address = getAvatarAddress(sender_avatar)
+  let height = await blockchain.height()
+  let txs = await blockchain.addresses.txs(wallet.getAddresses())
+  let utxos = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses()) //Get all utxo
+  let results = await Promise.all([
+                    Metaverse.output.findUtxo(utxos, {}, height),
+                    Metaverse.output.filter(utxos, {
+                        type: "mit"
+                    })
+                ])
+  //console.log(results)
+  //console.log(results[0])
+  console.log(results[0].utxo.concat(results[1]))
+  let tx = await Metaverse.transaction_builder.transferMIT(results[0].utxo.concat(results[1]), sender_avatar, recipient_address, recipient_avatar, symbol, change_address, results[0].change)
+
+  tx = await wallet.sign(tx)
+
+  tx = await tx.encode()
+
+  tx = await blockchain.transaction.broadcast(tx.toString('hex'))
+
+  console.log(tx)
+}
+
+async function getAvatarInfo(avatar){
+  let avatarInfo = await blockchain.avatar.get(avatar)
+  return avatarInfo
 
 }
 
-async function issueMIT(){
-
-}
-
-async function sendMIT(){
-
+async function getAvatarAddress(avatar){
+  let avatarInfo = await blockchain.avatar.get(avatar)
+  return avatarInfo.address
 }
 
 

@@ -1,48 +1,76 @@
-let blockchain = require('../../mvs-blockchain-js')({
-
-    url: "https://explorer-testnet.mvs.org/api/"
-});
-
-let Metaverse = require('metaversejs');
+// let blockchain = require('../../mvs-blockchain-js')({
+//
+//     url: "https://explorer-testnet.mvs.org/api/"
+// });
 
 var wallet
-var mnemonic = "van juice oak general lyrics gravity hammer shield over eager crew volume survey join lonely purchase kitten artwork mass cousin process mixture add knife"
+var mnemonic
 var addresses
 var balances
 
-run()
 
-async function run(){
-  await createWallet()
+async function initialize(){
+  blockchain = await Blockchain()
 
-  let balance = await getETPBalance()
-  console.log("Wallet balance: " + balance + " ETP")
-
-  await sendETP()
 }
 
 async function generateMnemonic(){
-  mnemonic = await Metaverse.wallet.generateMnemonic()
+  let newMnemonic = await Metaverse.wallet.generateMnemonic()
+  return (newMnemonic)
 }
 
-async function createWallet() {
+async function createNewWallet() {
+  mnemonic = await generateMnemonic()
+  wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')
+  addresses = await wallet.getAddresses()
+  alert("new Wallet created with mnemonic: " + mnemonic)
+  await showBalances()
+  await populateAddressSelect()
+}
+
+async function importWallet() {
+  mnemonic = document.getElementById("mnemonicInput").value
   wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')
   addresses = await wallet.getAddresses()
 }
 
-async function getETPBalance(){
+async function showBalances(){
+
+  var balancesTable = document.getElementById("balancesTable");
+
+  for (i = 0; i < addresses.length; ++i) {
+
+    var row = balancesTable.insertRow(i+1);
+
+    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+
+    // Add some text to the new cells:
+    cell1.innerHTML = addresses[i];
+    cell2.innerHTML = await getETPBalance([addresses[i]]);
+  }
+
+  document.getElementById('totalBalance').innerHTML = await getETPBalance(addresses)
+}
+
+async function displayMnemonic() {
+  document.getElementById('mnemonicLabel').innerHTML = mnemonic
+}
+
+async function getETPBalance(addressArray){
 
   //Get the lastest Blockchain Length
   let height = await blockchain.height()
 
   //Get a list of wallet transactions
-  let txs = await blockchain.addresses.txs(addresses)
+  let txs = await blockchain.addresses.txs(addressArray)
 
   //Get a list of unspent transaction outputs amongst your transactions
-  let utxo = await Metaverse.output.calculateUtxo(txs.transactions, addresses)
+  let utxo = await Metaverse.output.calculateUtxo(txs.transactions, addressArray)
 
   //Calculate your balances based on the utxos
-  let balances = await blockchain.balance.all(utxo, addresses, height)
+  let balances = await blockchain.balance.all(utxo, addressArray, height)
 
   let ETPBalance = balances.ETP.available
   ETPBalance = parseFloat(ETPBalance/100000000)
@@ -50,14 +78,34 @@ async function getETPBalance(){
 
 }
 
-async function sendETP(amount){
+async function populateAddressSelect() {
+  let addressSelect = document.getElementById('addressSelect');
+  let anyOption = document.createElement("option");
+  anyOption.value = addresses
+  anyOption.innerHTML = "any"
 
+  addressSelect.appendChild(anyOption)
+
+  for (i = 0; i < addresses.length; ++i) {
+   var opt = document.createElement("option");
+   opt.value= [addresses[i]];
+   opt.innerHTML = addresses[i];
+
+   addressSelect.appendChild(opt);
+ }
+}
+
+async function sendETP(){
+
+  let amount = document.getElementById("sendAmount").innerHTML
   var target = {
       ETP: amount
   };
 
-  var recipient_address = "MVbtobP4m44AKsx5PqBbtrBUdycNHxM3eQ";
+  var recipient_address = document.getElementById("sendTo").innerHTML;
 
+  console.log(amount)
+  console.log(recipient_address)
   let height = await blockchain.height()
   let txs = await blockchain.addresses.txs(addresses)
 

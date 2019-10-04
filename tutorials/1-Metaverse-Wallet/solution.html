@@ -4,28 +4,36 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <script ></script>
-  <body>
+  <script src="metaverse.min.js"></script>
+  <script src ="index.min.js"></script>
+  <script src="solution.js"></script>
+  <script> initialize()</script>
+  <body >
 
     <h3> Create new Wallet </h3>
-
-    <button onclick="createWallet()">Create New Wallet</button> <br>
-    <input placeholder = "mnemonic"></input> <button>Import Wallet</button>
+    <button onclick="createNewWallet()">Create New Wallet</button> <br>
+    <input placeholder = "mnemonicInput"></input> <button onclick="importWallet()">Import Wallet</button>
 
     <h3> Wallet Details</h3>
-    <label>mnemonic</label> <br>
-    <li> Addresses: </li>
+    <h5> Mnemonic <h5>
+    <label id="mnemonicLabel"></label> <button id="showHideMnemnonic">Show</button>
+    <h5>Addresses and Balances</h5>
+    <table id="balancesTable">
+          <tr>
+              <th>Address</th>
+              <th>Balance</th>
+          </tr>
+    </table> <br>
 
-    <h3> Check ETP Balance </h3>
+    <label id="totalBalance"></label>
 
-    <select></select> <label>Balance: </label><br>
-    <label>Total Balance</label>
 
     <h3> Send ETP </h3>
 
-    <label>send From </label><select></select><br>
-    <input placeholder ="sendTo"></input><br>
-    <input placeholder = "amount"></input><br>
+    <label>Send From </label>
+    <select id="addressSelect"></select><br>
+    <input placeholder ="sendTo" id = "sendTo"></input><br>
+    <input placeholder = "amount" id= "sendAmount"></input><br>
 
   <button onclick="sendETP()">Send</button>
 

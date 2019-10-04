@@ -3,8 +3,8 @@ let blockchain = require('../mvs-blockchain-js')({
 });
 let Metaverse = require('metaversejs');
 
-var avatar_name = "testAvatar2";
-var mnemonic = "alley machine mind first state prepare holiday wild humor thunder write laugh grunt dog answer gossip autumn satisfy sell almost payment orchard flush kiwi"
+var avatar_name = "testAvatar3";
+var mnemonic = "van juice oak general lyrics gravity hammer shield over eager crew volume survey join lonely purchase kitten artwork mass cousin process mixture add knife"
 //registerAvatar()
 registerAvatar()
 async function registerAvatar() {
