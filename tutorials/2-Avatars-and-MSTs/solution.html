@@ -4,44 +4,47 @@
     <meta charset="utf-8">
     <title></title>
     <script src="metaverse.min.js"></script>
-    <script src ="index.min.js"></script>
+    <script src="index.min.js"></script>
     <script src="solution.js"></script>
-    <script> initialize()</script>
+
   </head>
-  <body>
+  <body onload="initialize()">
+
+
+    <h3> Register Avatar </h3>
+    <label>From Address</lable><select id="addressSelect"></select><br>
+
+    <input placeholder="Avatar Name" id="avatarName" input>
+    <button onclick="registerAvatar()">Register</button>
 
     <h3> Verify Avatar </h3>
 
     <input id=getAvatarInput></input> <button onclick="showAvatar()">Verify</button> <br>
     <label id=avatarAddressLabel></label>
 
-    <h3> Register Avatar </h3>
-    <label>From Address</lable><select id="addressSelect"></select><br>
+    <h3> Your Avatars </h3>
 
-    <input placeholder="Avatar Name"></input>
-    <button onclick="registerAvatar()">Register</button>
-
-    <table>
-      <th></th>
-      <th>Address</th>
-      <th>AvatarName</th>
+    <table id="avatarsTable">
+      <th>Symbol</th>
+      <th>Owner</th>
+      <!--<th>Issuance tx</th>-->
     </table>
 
     <h3> Issue MST </h3>
 
-    <label>From Avatar</lable><select id="avatarSelect"></select><br>
+    <label>From Avatar</lable><select id="avatarSelect" ></select><br>
 
-    <input placeholder="symbol"></input> <br>
-
-    <input placeholder="max_supply"></input>
+    <input id="MSTSymbol" placeholder="symbol"></input> <br>
+    <input id="MSTSupply" placeholder="max_supply"></input> <br>
+    <input id="MSTDecimals" placeholder="decimal_precision"></input> <br>
+    <input id="MSTDescription" placeholder="description"></input> <br>
 
     <button onclick="issueMST()">Issue</button>
 
     <h3> Balances </h3>
 
-    <table>
-      <th>MST</th>
-      <th>Issuer</th>
+    <table id="MSTBalancesTable">
+      <th>Symbol</th>
       <th>Amount</th>
 
     </table>

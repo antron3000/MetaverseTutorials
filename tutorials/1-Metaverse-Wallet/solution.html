@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -6,10 +6,9 @@
     <script src="metaverse.min.js"></script>
     <script src ="index.min.js"></script>
     <script src="solution.js"></script>
-    <script> initialize()</script>
   </head>
-  
-  <body >
+
+  <body onload="initialize()">
 
     <h3> Create new Wallet </h3>
     <button onclick="createNewWallet()">Create New Wallet</button> <br>
@@ -17,7 +16,8 @@
 
     <h3> Wallet Details</h3>
     <h5> Mnemonic <h5>
-    <label id="mnemonicLabel"></label> <button id="showHideMnemnonic">Show</button>
+      <button id="showHideMnemnonic" onclick="showHide()">Show</button><br>
+    <label id="mnemonicLabel"></label>
     <h5>Addresses and Balances</h5>
     <table id="balancesTable">
           <tr>

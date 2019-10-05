@@ -8,10 +8,12 @@ var mnemonic
 var addresses
 var balances
 
+var hidden = true
 
 async function initialize(){
   blockchain = await Blockchain({url: "https://explorer-testnet.mvs.org/api/"})
-
+  let test = document.getElementById("addressSelect")
+  console.log(test)
 }
 
 async function generateMnemonic(){
@@ -54,7 +56,7 @@ async function showBalances(){
     cell2.innerHTML = await getETPBalance([addresses[i]]);
   }
 
-  document.getElementById('totalBalance').innerHTML = await getETPBalance(addresses)
+  document.getElementById('totalBalance').innerHTML = "Total ETP: " + await getETPBalance(addresses)
 }
 
 async function displayMnemonic() {
@@ -129,4 +131,18 @@ async function sendETP(){
 
   //log amount ETP sent to WHO
   console.log(tx)
+}
+
+async function showHide(){
+  if(hidden){
+    document.getElementById("mnemonicLabel").innerHTML = mnemonic
+    document.getElementById("showHideMnemnonic").innerHTML = "Hide"
+
+    hidden = false;
+  } else{
+    document.getElementById("mnemonicLabel").innerHTML = ""
+    document.getElementById("showHideMnemnonic").innerHTML = "Show"
+
+    hidden = true;
+  }
 }

@@ -1,7 +1,7 @@
 let blockchain
 let wallet //faucet wallet
 let addresses //faucet address
-mnemonic = "van juice oak general lyrics gravity hammer shield over eager crew volume survey join lonely purchase kitten artwork mass cousin process mixture add knife" //Faucet Mnemonic
+mnemonic = "butter vacuum breeze glow virtual mutual veteran argue want pipe elite blast judge write sand toilet file joy exotic reflect truck topic receive wait" //Faucet Mnemonic
 
 async function createWallet() {
   blockchain = await Blockchain({url: "https://explorer-testnet.mvs.org/api/"})
@@ -39,7 +39,7 @@ async function withdraw(){
   let balance = await getBalances();
   console.log(balance.ETP.available)
 
-  send(parseInt(balance.ETP.available/100),recipient_address)
+  send(parseInt(balance.ETP.available/10),recipient_address)
 
 }
 

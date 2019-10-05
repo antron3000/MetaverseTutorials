@@ -55,7 +55,7 @@ async function run(){
   var target = {
       "COOOL": 1
   };
-  //await sendMST(target)
+  await sendMST(target)
   console.log("MST Sent")
 
 
@@ -201,14 +201,13 @@ async function issueMST(issuingAddress,symbol,max_supply,precision,issuer,descri
   tx = await wallet.sign(tx)
   tx = await tx.encode()
   tx = await tx.toString('hex')
-  console.log(tx)
   tx = await blockchain.transaction.broadcast(tx)
 
   console.log(tx);
 }
 
 async function sendMST(target){
-  let recipient_address = "tEEcN4u8RgcCryQMxJATAxEXsytz6ny2S2"
+  let recipient_address = "t72Uc1k4EP4PztRgnDnxGZ2AmgEDj7rVVn"
   change_address = wallet.getAddress(0)
   let height = await blockchain.height()
   let txs = await blockchain.addresses.txs(wallet.getAddresses())

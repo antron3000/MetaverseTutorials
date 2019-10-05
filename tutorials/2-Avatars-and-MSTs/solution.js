@@ -1,21 +1,35 @@
-let mnemonic = "van juice oak general lyrics gravity hammer shield over eager crew volume survey join lonely purchase kitten artwork mass cousin process mixture add knife"
+let mnemonic = "winter practice diagram kitten source man risk verify protect ship quick pistol brick runway penalty chest head purse device menu balance eight cube release"
 let wallet
 let addresses
 let blockchain
+let avatars
 
 async function initialize(){
   blockchain = await Blockchain({url: "https://explorer-testnet.mvs.org/api/"})
   wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')
   addresses = await wallet.getAddresses()
+  let addressSelect = document.getElementById("addressSelect");
+  avatars = new Array()
+  await getAvatars()
+  await populateAddressSelect()
+  await showAvatars()
+  await populateAvatarSelect()
+
 }
 
-async function registerAvatar(avatar_name,avatar_address) {
+async function registerAvatar() {
+
+    let avatar_name = document.getElementById("avatarName").value
+
+    var addressSelect = document.getElementById('addressSelect');
+    let avatar_address = addressSelect[addressSelect.selectedIndex].value
+    console.log(avatar_name)
+    console.log(avatar_address)
 
     let change_address = avatar_address
-    console.log(avatar_address)
     let height = await blockchain.height()
-    let txs = await blockchain.addresses.txs([avatar_address])
-    let utxos = await Metaverse.output.calculateUtxo(txs.transactions, [avatar_address]) //Get all utxo for the avatar address
+    let txs = await blockchain.addresses.txs(addresses)
+    let utxos = await Metaverse.output.calculateUtxo(txs.transactions, addresses) //Get all utxo for the avatar address
     let result = await Metaverse.output.findUtxo(utxos, {}, height, 100000000) //Collect utxo to pay for the fee of 1 ETP
     let tx = await Metaverse.transaction_builder.issueDid(result.utxo, avatar_address, avatar_name, change_address, result.change, 80000000, 'testnet')
     tx= await wallet.sign(tx)
@@ -25,18 +39,47 @@ async function registerAvatar(avatar_name,avatar_address) {
     console.log(tx)
 }
 
-async function issueMST(issuer,symbol,max_supply,decimalPrecision,issuer,description){
-  var recipient_address = issuer;
-  var change_address = issuer;
+async function issueMST(){
 
-  let wallet = await Metaverse.wallet.fromMnemonic("lunar there win define minor shadow damage lounge bitter abstract sail alcohol yellow left lift vapor tourist rent gloom sustain gym dry congress zero")
+  var symbol = document.getElementById("MSTSymbol").value
+  var max_supply = document.getElementById("MSTSupply").value
+  var precision = document.getElementById("MSTDecimals").value
+  var description = document.getElementById("MSTDescription").value
+  var avatarSelect = document.getElementById('avatarSelect');
+
+  let issuer = avatarSelect[avatarSelect.selectedIndex].value
+  console.log(issuer)
+  let issuingAddress = await getAvatar(issuer)
+  issuingAddress = issuingAddress.toString()
+  var recipient_address = issuingAddress;
+  var change_address = issuingAddress;
+
+  console.log(issuingAddress)
+  console.log("symbol " + symbol)
+  console.log("max_supply " + max_supply)
+  console.log("precision " + precision)
+
+  console.log("issuer " + issuer)
+  console.log("description " + description)
+
+  var recipient_address = issuingAddress;
+  var change_address = issuingAddress;
+
+  let height = await blockchain.height()
+  console.log(issuingAddress)
+
   let txs = await blockchain.addresses.txs(wallet.getAddresses())
-  let utxos = await Metaverse.transaction_builder.calculateUtxo(txs.transactions, wallet.getAddresses()) //Get all utxo
-  let result = await Metaverse.transaction_builder.findUtxo(utxos, {}, Metaverse.transaction.ASSET_ISSUE_DEFAULT_FEE) //Collect utxo for given target
-  let tx = await Metaverse.transaction_builder.issue(result.utxo, recipient_address, symbol, max_supply, precision, issuer, description, change_address, result.change)
-  tx = await wallet.sign(tx)
+  let utxos = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses()) //Get all utxo
+  let result = await Metaverse.output.findUtxo(utxos, {}, height, 1000000000) //Collect utxo to pay for the fee of 10 ETP
+  let tx = await Metaverse.transaction_builder.issueAsset(result.utxo, recipient_address, symbol, max_supply, precision, issuer, description, 0,false, change_address, result.change,true,0,'testnet',null,undefined)
+  console.log(tx);
+
+   tx = await wallet.sign(tx)
   tx = await tx.encode()
-  console.log(tx.toString('hex'));
+  tx = await tx.toString('hex')
+  tx = await blockchain.transaction.broadcast(tx)
+
+  console.log(tx);
 }
 
 async function transferMST() {
@@ -50,9 +93,7 @@ async function transferMST() {
   // tx = await blockchain.transaction.broadcast(tx.toString('hex')))
 }
 
-async function showAvatars() {
 
-}
 
 async function showAvatar() {
   let avatar = document.getElementById("getAvatarInput").value
@@ -66,4 +107,95 @@ async function getAvatar(avatar) {
   let avatarInfo = await blockchain.avatar.get(avatar)
   return avatarInfo.address
 
+}
+
+async function populateAddressSelect() {
+  let addressSelect = document.getElementById('addressSelect');
+  for (i = 0; i < addresses.length; ++i) {
+   var opt = document.createElement("option");
+   opt.value= [addresses[i]];
+   opt.innerHTML = addresses[i];
+
+   addressSelect.appendChild(opt);
+ }
+}
+
+async function getAvatars() {
+  for (i = 0; i < addresses.length; ++i) {
+   let avatarInfo = await blockchain.avatar.get(addresses[i])
+   if(avatarInfo!=null){
+     avatars.push(avatarInfo)
+   }
+ }
+}
+
+async function showAvatars() {
+
+  var avatarTable = document.getElementById("avatarsTable");
+  for (let i = 0; i < avatars.length; ++i) {
+     let avatarAddress = avatars[i].address
+     let avatarSymbol = avatars[i].symbol
+     //let issue_tx = avatarInfo.issue_tx
+     //let issue_tx_link = document.createElement("div")
+     //issue_tx_link.innerText = "Issuance tx"
+     //issue_tx_link.setAttribute("href", "https://explorer-testnet.mvs.org/tx/" + issue_tx)
+     var row = avatarTable.insertRow(i+1);
+
+     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+     var cell1 = row.insertCell(0);
+     var cell2 = row.insertCell(1);
+
+     // Add some text to the new cells:
+     cell1.innerHTML = avatarSymbol;
+     cell2.innerHTML = avatarAddress;
+     //cell3.inner = issue_tx_link;
+   }
+}
+
+async function populateAvatarSelect() {
+  let avatarSelect = document.getElementById('avatarSelect');
+  for (i = 0; i < avatars.length; ++i) {
+   var opt = document.createElement("option");
+   opt.value= avatars[i].symbol;
+   opt.innerHTML = avatars[i].symbol;
+
+   avatarSelect.appendChild(opt);
+ }
+}
+
+async function showMSTBalances() {
+  var balancesTable = document.getElementById("balancesTable");
+  let balances = await getMSTBalances(addresses)
+
+  for (i = 0; i < balances.length; ++i) {
+
+    var row = balancesTable.insertRow(i+1);
+
+    // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+
+    // Add some text to the new cells:
+    cell1.innerHTML = addresses[i];
+    cell2.innerHTML = await getETPBalance([addresses[i]]);
+  }
+
+  document.getElementById('totalBalance').innerHTML = "Total ETP: " + await getETPBalance(addresses)
+
+}
+
+async function getMSTBalances(addressArray){
+  //Get the lastest Blockchain Length
+  let height = await blockchain.height()
+
+  //Get a list of wallet transactions
+  let txs = await blockchain.addresses.txs(addressArray)
+
+  //Get a list of unspent transaction outputs amongst your transactions
+  let utxo = await Metaverse.output.calculateUtxo(txs.transactions, addressArray)
+
+  //Calculate your balances based on the utxos
+  let balances = await blockchain.balance.all(utxo, addressArray, height)
+
+  return balances
 }
