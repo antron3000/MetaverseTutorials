@@ -3,23 +3,39 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script src="metaverse.min.js"></script>
+    <script src ="index.min.js"></script>
+    <script src="solution.js"></script>
+    <script> initialize()</script>
   </head>
   <body>
 
+    <h3> Verify Avatar </h3>
+
+    <input id=getAvatarInput></input> <button onclick="showAvatar()">Verify</button> <br>
+    <label id=avatarAddressLabel></label>
+
     <h3> Register Avatar </h3>
+    <label>From Address</lable><select id="addressSelect"></select><br>
 
     <input placeholder="Avatar Name"></input>
-    <label>Avatar Address</label> <select></select>
-    <button>Register</button>
+    <button onclick="registerAvatar()">Register</button>
 
-<button></button>
+    <table>
+      <th></th>
+      <th>Address</th>
+      <th>AvatarName</th>
+    </table>
+
     <h3> Issue MST </h3>
+
+    <label>From Avatar</lable><select id="avatarSelect"></select><br>
 
     <input placeholder="symbol"></input> <br>
 
     <input placeholder="max_supply"></input>
 
-    <button>Issue</button>
+    <button onclick="issueMST()">Issue</button>
 
     <h3> Balances </h3>
 
@@ -32,7 +48,8 @@
 
     <h3> Send MST </h3>
 
-    <label></label><select></select>
+    <label>MST</lable><select id="MSTSelect"></select><br>
+
     <input placeholder ="sendTo"></input><br>
     <input placeholder = "amount"></input><br>
 

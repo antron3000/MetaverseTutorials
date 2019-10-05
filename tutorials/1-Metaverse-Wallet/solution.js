@@ -10,7 +10,7 @@ var balances
 
 
 async function initialize(){
-  blockchain = await Blockchain()
+  blockchain = await Blockchain({url: "https://explorer-testnet.mvs.org/api/"})
 
 }
 
@@ -32,6 +32,9 @@ async function importWallet() {
   mnemonic = document.getElementById("mnemonicInput").value
   wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')
   addresses = await wallet.getAddresses()
+  alert("new Wallet created with mnemonic: " + mnemonic)
+  await showBalances()
+  await populateAddressSelect()
 }
 
 async function showBalances(){
@@ -65,6 +68,7 @@ async function getETPBalance(addressArray){
 
   //Get a list of wallet transactions
   let txs = await blockchain.addresses.txs(addressArray)
+  console.log(txs)
 
   //Get a list of unspent transaction outputs amongst your transactions
   let utxo = await Metaverse.output.calculateUtxo(txs.transactions, addressArray)

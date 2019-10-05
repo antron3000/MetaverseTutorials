@@ -101,10 +101,11 @@ async function getBalances(){
 
   let height = await blockchain.height()
   let txs = await blockchain.addresses.txs(wallet.getAddresses())
+  console.log(txs)
   let utxo = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses())
   let balances = await blockchain.balance.all(utxo, wallet.getAddresses(), height)
 
-  return JSON.stringify(balances)
+  return balances
 
 }
 

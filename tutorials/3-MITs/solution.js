@@ -1,3 +1,12 @@
+let mnemonic = "van juice oak general lyrics gravity hammer shield over eager crew volume survey join lonely purchase kitten artwork mass cousin process mixture add knife"
+let wallet
+let addresses
+
+async function initialize(){
+  blockchain = await Blockchain({url: "https://explorer-testnet.mvs.org/api/"})
+  wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')
+  addresses = await wallet.getAddresses()
+}
   async function issueMIT(){
 
   let wallet = await Metaverse.wallet.fromMnemonic(mnemonic, 'testnet')

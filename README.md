@@ -33,9 +33,7 @@ cd mvs-blockchain-js && npm install
 ```
 
 
-Each tutorial is self-contained, so you can do them separately.
-
-If you are new to Metaverse or blockchain technology you should begin with Tutorial 1
+Each tutorial builds on the previous ones, so it is recommended to do them in order
 
 To begin a tutorial navigate to the tutorials folder and follow instructions.
 

@@ -1,3 +1,14 @@
+let mnemonic = "van juice oak general lyrics gravity hammer shield over eager crew volume survey join lonely purchase kitten artwork mass cousin process mixture add knife"
+let wallet
+let addresses
+let blockchain
+
+async function initialize(){
+  blockchain = await Blockchain({url: "https://explorer-testnet.mvs.org/api/"})
+  wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')
+  addresses = await wallet.getAddresses()
+}
+
 async function registerAvatar(avatar_name,avatar_address) {
 
     let change_address = avatar_address
@@ -29,12 +40,30 @@ async function issueMST(issuer,symbol,max_supply,decimalPrecision,issuer,descrip
 }
 
 async function transferMST() {
-  let height = await blockchain.height()
-  let txs = await blockchain.addresses.txs(["tDZ5YMLJ3z6VbvAsX1c8oe9hJ2nND4jszz", "t85Hm2nYwQXrry2cVmEHPq8krRdJ7KYjmq"])
-  let utxos = await Metaverse.output.calculateUtxo(txs.transactions, ["tDZ5YMLJ3z6VbvAsX1c8oe9hJ2nND4jszz", "t85Hm2nYwQXrry2cVmEHPq8krRdJ7KYjmq"])) //Get all utxo
-  let result = await Metaverse.output.findUtxo(utxos, target, height)) //Collect utxo for given target
-  let tx = await Metaverse.transaction_builder.send(result.utxo, recipient_address, undefined, target, change_address, result.change))
-  tx = await wallet.sign(tx))
-  tx = await tx.encode())
-  tx = await blockchain.transaction.broadcast(tx.toString('hex')))
+  // let height = await blockchain.height()
+  // let txs = await blockchain.addresses.txs(["tDZ5YMLJ3z6VbvAsX1c8oe9hJ2nND4jszz", "t85Hm2nYwQXrry2cVmEHPq8krRdJ7KYjmq"])
+  // let utxos = await Metaverse.output.calculateUtxo(txs.transactions, ["tDZ5YMLJ3z6VbvAsX1c8oe9hJ2nND4jszz", "t85Hm2nYwQXrry2cVmEHPq8krRdJ7KYjmq"])) //Get all utxo
+  // let result = await Metaverse.output.findUtxo(utxos, target, height)) //Collect utxo for given target
+  // let tx = await Metaverse.transaction_builder.send(result.utxo, recipient_address, undefined, target, change_address, result.change))
+  // tx = await wallet.sign(tx))
+  // tx = await tx.encode())
+  // tx = await blockchain.transaction.broadcast(tx.toString('hex')))
+}
+
+async function showAvatars() {
+
+}
+
+async function showAvatar() {
+  let avatar = document.getElementById("getAvatarInput").value
+  console.log(avatar)
+  let avatarAddress = await getAvatar(avatar)
+  document.getElementById("avatarAddressLabel").innerHTML = avatarAddress
+}
+
+async function getAvatar(avatar) {
+
+  let avatarInfo = await blockchain.avatar.get(avatar)
+  return avatarInfo.address
+
 }
