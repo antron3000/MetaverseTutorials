@@ -59,7 +59,7 @@ For more information refer to the [Metaverse Documentation](https://docs.mvs.org
 
 Please follow the Environment setup instructions below before starting.
 
-*Environment Setup*
+##Environment Setup
 
 Start by entering the "playground" directory. This is where you will be building your Metaverse apps during this tutorial
 
@@ -157,4 +157,4 @@ Metaverse
 
 You should see the "blockchain" (from mvs-blockchain-js) and Metaverse (from metaversjs) objects show up in the console.
 
-You should now be fully set up and ready to begin tutorial 1. 
+You should now be fully set up and ready to begin tutorial 1.
