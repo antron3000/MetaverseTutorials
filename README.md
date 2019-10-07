@@ -45,6 +45,8 @@ These tutorials are designed
 * explain inner workings and give broad understanding of Metaverse blockchain
 * Show you step by step how to create dApp on Metaverse. Can also be used to integrate into your existing app.
 * provide working examples of what you should have built.
+* each tutorial comes with complete solutions to show you how its done in the end. Don't look till you're done!
+
 
 1 - Integrate metaverse wallet into your dapp with your DID  
 2 - Issue and transfer MST’s  
@@ -61,7 +63,7 @@ Please follow the Environment setup instructions below before starting.
 
 # Environment Setup
 
-Start by entering the "playground" directory. This is where you will be building your Metaverse apps during this tutorial
+Start by entering the "playground" directory. This is where you can build ALL your Metaverse apps during the tutorial.
 
 ```
 cd tutorials/playground
@@ -142,7 +144,7 @@ This will generate javascript files into the /dist folder that you can import in
 
 Serve your webpage
 ```
-python -m SimpleHTTPServer 3333
+python -m SimpleHTTPServer 4444
 ```
 
 To test that the libraries have been successfully imported into your webpage, open the web console and enter

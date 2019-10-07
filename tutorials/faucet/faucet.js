@@ -40,7 +40,7 @@ async function withdraw(){
   console.log(balance.ETP.available)
 
   send(parseInt(balance.ETP.available/10),recipient_address)
-
+  //send(2500000000),recipient_address)
 }
 
 async function send(amount,recipient_address) {
