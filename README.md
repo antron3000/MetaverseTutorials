@@ -59,7 +59,7 @@ For more information refer to the [Metaverse Documentation](https://docs.mvs.org
 
 Please follow the Environment setup instructions below before starting.
 
-## Environment Setup
+# Environment Setup
 
 Start by entering the "playground" directory. This is where you will be building your Metaverse apps during this tutorial
 
