@@ -135,7 +135,7 @@ To interact with webapps you must generate "index.js" from mvs-blockchain-js and
 grunt
 ```
 
-This will generate javascript files into the /dist folder that you can import into your app.  For the purpose of this tutorial these files have already been included in the playground folder. To include them in your webapp just add these script tags into your html page.
+This will generate javascript files into the /dist folder that you can import into your app.  You don't have to worry about this for now. We have generated these files and placed them in the playground folder. To include them in your webapp just add these script tags into your html page.
 
 ```
 <script src = "metaverse.min.js"></script>
