@@ -26,6 +26,8 @@ In Metaverse, as with Bitcoin, you can generate deterministic wallets using by m
 
 ### Hands on Tutorial
 
+Note: Explicit detailed instructions are given to work with Metaverse, but not always so with HTML elements. If you get stuck with coding HTML elements, you can always refer to w3schools.com
+
 Start by setting up a directory to work in
 
 ```
@@ -74,7 +76,6 @@ Open tut1.html and use this HTML front end as the base of your app.
   </body>
 </html>
 ```
-
 
 You should now be set up to use the Metaverse javascript libraries. We are using the async/await syntax. The await keyword can only be used in async functions so we will create async functions to perform all actions.
 

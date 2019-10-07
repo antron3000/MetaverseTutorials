@@ -70,7 +70,6 @@ async function getETPBalance(addressArray){
 
   //Get a list of wallet transactions
   let txs = await blockchain.addresses.txs(addressArray)
-  console.log(txs)
 
   //Get a list of unspent transaction outputs amongst your transactions
   let utxo = await Metaverse.output.calculateUtxo(txs.transactions, addressArray)
