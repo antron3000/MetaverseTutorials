@@ -75,26 +75,6 @@ Open tut1.html and use this HTML front end as the base of your app.
 </html>
 ```
 
-**Interact with metaverse via nodejs**
-
-now open tut1.js. Let's create a nodejs script
-
-First import mvs-blockchain from the mvs-blockchain folder
-
-```
-let blockchain = require('../../mvs-blockchain-js')({
-
-    url: "https://explorer-testnet.mvs.org/api/"
-});
-
-```
-
-import metaversejs
-
-```
-let Metaverse = require('metaversejs');
-```
-
 
 You should now be set up to use the Metaverse javascript libraries. We are using the async/await syntax. The await keyword can only be used in async functions so we will create async functions to perform all actions.
 
