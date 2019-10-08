@@ -1,3 +1,5 @@
+# Tutorial 2 - Avatars and Smart Token
+
 In this tutorial you will learn how to
 
 * Register an Avatar
@@ -159,7 +161,7 @@ async function transferMST() {
 
 ```
 
-### Connect to your dApp
+## Connect to your dApp
 
 To interact with metaversejs in your webapp, you need to reference metaversejs in your HTML.
 
@@ -179,6 +181,7 @@ Also reference your tut2.js file.
 
 Verify that you have connected metaverse to the webapp by opening the browser console and typing "Metaverse". You should see the Metaverse object come up and look something like
 
-
-
 Next connect elements to the js functions and youre done!
+
+## Whats next?
+Continue with the next tutorial and learn how to work with [Metaverse Identifiable Token (MIT)](../3-MITs)

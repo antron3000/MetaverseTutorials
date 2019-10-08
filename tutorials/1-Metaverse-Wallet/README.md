@@ -1,3 +1,5 @@
+# Tutorial 1 - Metaverse Wallet
+
 In this tutorial you will learn how to
 
 * Create a Metaverse wallet
@@ -6,7 +8,7 @@ In this tutorial you will learn how to
 * Send transactions programatically
 * Integrate wallet into your dApp
 
-### Introduction
+## Introduction
 
 Metaverse is a UTXO based blockchain
 
@@ -24,7 +26,7 @@ For more information on UTXO's look here https://komodoplatform.com/whats-utxo/
 
 In Metaverse, as with Bitcoin, you can generate deterministic wallets using by memnonic code words. This gives you multiple addresses you can send and recieve transactions from.
 
-### Hands on Tutorial
+## Hands on Tutorial
 
 Note: Explicit detailed instructions are given to work with Metaverse, but not always so with HTML elements. If you get stuck with coding HTML elements, you can always refer to w3schools.com
 
@@ -41,7 +43,7 @@ Create front end
 Open tut1.html and use this HTML front end as the base of your app.
 
 ```
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -180,7 +182,7 @@ async function sendETP(amount){
 }
 
 ```
-### Test NodeJS
+## Test NodeJS
 
 To test your nodejs code, Create a function called run() and make sure it gets executed in the script.
 
@@ -213,7 +215,7 @@ node tut1.js
 You should see an ETP balance, and a transaction hash in your terminal. You can take the transaction hash and view the transaction in the [Metaverse Testnet Blockchain Explorer](https://explorer-testnet.mvs.org/).
 
 
-### Connect to Dapp
+## Connect to Dapp
 
 To interact with metaversejs in your webapp, you need to reference metaversejs in your HTML.
 
@@ -240,3 +242,6 @@ Verify that you have connected metaverse to the webapp by opening the browser co
 
 _TODO: Expand upon once metaversjs referencing is completed_
 Now connect elements to the js functions and youre done!
+
+## Whats next?
+Continue with the next tutorial and learn how to [issue and transfer Metaverse Smart Token (MST)](../2-Avatars-and-MSTs)

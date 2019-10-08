@@ -48,14 +48,9 @@ These tutorials are designed
 * each tutorial comes with complete solutions to show you how its done in the end. Don't look till you're done!
 
 
-1 - Integrate metaverse wallet into your dapp with your DID  
-2 - Issue and transfer MST’s  
-3 - Issue and transfer MIT’s  
-4 - learn the metaverse command line  
-5 - create metaverse wallet plugin  
-6 - execute coin swaps  
-7 - create multisig transactions  
-8 - understanding Metaverse MIPs  
+1. [Integrate Metaverse wallet into your dapp with your DID](tutorials/1-Metaverse-Wallet)
+2. [Issue and transfer MST’s](tutorials/2-Avatars-and-MSTs)
+3. [Issue and transfer MIT’s](tutorials/3-MITs)
 
 For more information refer to the [Metaverse Documentation](https://docs.mvs.org/docs/)
 
@@ -159,4 +154,4 @@ Metaverse
 
 You should see the "blockchain" (from mvs-blockchain-js) and Metaverse (from metaversjs) objects show up in the console.
 
-You should now be fully set up and ready to begin tutorial 1.
+You should now be fully set up and ready to begin [tutorial 1](tutorials/1-Metaverse-Wallet).

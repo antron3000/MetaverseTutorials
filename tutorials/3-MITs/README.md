@@ -1,3 +1,5 @@
+# Tutorial 3 - Metaverse Identifiable Token (MIT)
+
 In this tutorial you will learn how to
 
 * What an MIT is
@@ -7,7 +9,7 @@ In this tutorial you will learn how to
 * Integrate MIT's into your app
 
 
-### Introduction
+## Introduction
 What are MIT's
 
 MIT stands for Metaverse Identifiable Token. MIT is Metaverse's non-fungible token standard. You can think of them as single Issue Assets with a unique identifying symbol. MIT's can also store a content string.
@@ -21,7 +23,7 @@ MIT's can be used to:
 MIT's can be transferred between avatars. Only Avatars can issue MIT's
 
 
-### Hands on Tutorial
+## Hands on Tutorial
 
 First lets create an html front end
 
@@ -141,3 +143,9 @@ Verify that you have connected metaverse to the webapp by opening the browser co
 ''' '''
 
 Next connect elements to the js functions and youre done!
+
+## Whats next?
+
+You have completed the Metaverse Tutorial series. For further information checkout the [examples](https://github.com/antron3000/MetaverseTutorials/tree/master/examples) section or read the official [Metaverse Documentation](https://docs.mvs.org).
+
+Join the Metaverse developer community today and build amazing dapps. 
