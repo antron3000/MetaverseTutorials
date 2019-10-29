@@ -12,8 +12,6 @@ var hidden = true
 
 async function initialize(){
   blockchain = await Blockchain({url: "https://explorer-testnet.mvs.org/api/"})
-  let test = document.getElementById("addressSelect")
-  console.log(test)
 }
 
 async function generateMnemonic(){

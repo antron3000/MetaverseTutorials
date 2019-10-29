@@ -5,7 +5,7 @@ let blockchain = require('../mvs-blockchain-js')({
 let Metaverse = require('metaversejs');
 
 var wallet
-var mnemonic = "van juice oak general lyrics gravity hammer shield over eager crew volume survey join lonely purchase kitten artwork mass cousin process mixture add knife"
+var mnemonic = "butter vacuum breeze glow virtual mutual veteran argue want pipe elite blast judge write sand toilet file joy exotic reflect truck topic receive wait"
 var addresses
 var balances
 
@@ -22,7 +22,7 @@ async function run(){
 
   console.log("Sending ETP..............")
   let amountToSend = 10000000
-  //await sendETP(amountToSend)
+  await sendETP(amountToSend)
   console.log("ETP Sent")
 
   console.log("Depositing ETP............")
@@ -32,8 +32,8 @@ async function run(){
   console.log("ETP deposited")
 
   console.log("Registering Avatar............")
-  let avatarName = "testguy3"
-  let avatarAddress = wallet.getAddress(0)
+  let avatarName = "testguy4"
+  let avatarAddress = wallet.getAddress(2)
   //await registerAvatar(avatarName,avatarAddress)
   console.log("avatar " + avatarName + " Registered to " + avatarAddress)
 
@@ -55,14 +55,14 @@ async function run(){
   var target = {
       "COOOL": 1
   };
-  await sendMST(target)
+  //await sendMST(target)
   console.log("MST Sent")
 
 
   console.log("Registering MIT................")
 
 
-  let MITsymbol = "testar2"
+  let MITsymbol = "testar7"
   let avatar = "testguy3"
   let content = "some test content"
   //await issueMIT(avatar,MITsymbol,content)
@@ -75,7 +75,7 @@ async function run(){
   let MITToSend = "testar"
   let sender_avatar = "testguy3"
   let recipient_avatar = "Tal"
-  await sendMIT(sender_avatar,recipient_avatar,MITToSend)
+//  await sendMIT(sender_avatar,recipient_avatar,MITToSend)
 
 }
 
@@ -101,7 +101,6 @@ async function getBalances(){
 
   let height = await blockchain.height()
   let txs = await blockchain.addresses.txs(wallet.getAddresses())
-  console.log(txs)
   let utxo = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses())
   let balances = await blockchain.balance.all(utxo, wallet.getAddresses(), height)
 

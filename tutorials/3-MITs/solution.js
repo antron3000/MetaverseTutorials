@@ -30,7 +30,6 @@ async function initialize(){
                 // .then(tx=>tx.toString('hex'))
   console.log(tx)
 
-
   }
 
 

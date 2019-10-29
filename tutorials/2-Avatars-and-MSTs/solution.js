@@ -71,12 +71,19 @@ async function issueMST(){
   let txs = await blockchain.addresses.txs(wallet.getAddresses())
   let utxos = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses()) //Get all utxo
   let result = await Metaverse.output.findUtxo(utxos, {}, height, 1000000000) //Collect utxo to pay for the fee of 10 ETP
-  let tx = await Metaverse.transaction_builder.issueAsset(result.utxo, recipient_address, symbol, max_supply, precision, issuer, description, 0,false, change_address, result.change,true,0,'testnet',null,undefined)
+  console.log(result.utxo)
+
+  let tx = await Metaverse.transaction_builder.issueAsset(result.utxo, recipient_address, symbol, max_supply, precision, issuer, description, 0,false, change_address, result.change,false,0,'testnet')
+  console.log(tx);
+   tx = await wallet.sign(tx)
+   console.log(tx);
+
+  tx = await tx.encode()
   console.log(tx);
 
-   tx = await wallet.sign(tx)
-  tx = await tx.encode()
   tx = await tx.toString('hex')
+  console.log(tx);
+
   tx = await blockchain.transaction.broadcast(tx)
 
   console.log(tx);

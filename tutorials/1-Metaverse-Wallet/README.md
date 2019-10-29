@@ -32,7 +32,7 @@ Start by setting up a directory to work in
 
 ```
 cd MetaverseTutorials/tutorials/playground
-touch tut1.html
+touch index.html
 touch tut1.js
 ```
 
@@ -76,6 +76,8 @@ Open tut1.html and use this HTML front end as the base of your app.
   </body>
 </html>
 ```
+
+
 
 You should now be set up to use the Metaverse javascript libraries. We are using the async/await syntax. The await keyword can only be used in async functions so we will create async functions to perform all actions.
 
@@ -234,9 +236,6 @@ Next serve the webpage with
 python -m SimpleHTTPServer 3333
 ```
 
-or however you prefer
+or however you prefer.
 
-Verify that you have connected metaverse to the webapp by opening the browser console and typing "Metaverse". You should see the Metaverse object come up and look something like
-
-_TODO: Expand upon once metaversjs referencing is completed_
-Now connect elements to the js functions and youre done!
+The next step is to connect the elements to the functions
