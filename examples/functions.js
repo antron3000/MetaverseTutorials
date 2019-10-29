@@ -22,7 +22,7 @@ async function run(){
 
   console.log("Sending ETP..............")
   let amountToSend = 10000000
-  await sendETP(amountToSend)
+  //wait sendETP(amountToSend)
   console.log("ETP Sent")
 
   console.log("Depositing ETP............")
@@ -32,24 +32,24 @@ async function run(){
   console.log("ETP deposited")
 
   console.log("Registering Avatar............")
-  let avatarName = "testguy4"
+  let avatarName = "canfr"
   let avatarAddress = wallet.getAddress(2)
   //await registerAvatar(avatarName,avatarAddress)
   console.log("avatar " + avatarName + " Registered to " + avatarAddress)
 
   console.log("getting Avatar Info......")
 
-  let avatarInfo = await getAvatarInfo("Tal")
+  let avatarInfo = await getAvatarInfo("PEI")
   console.log(avatarInfo)
 
   console.log("Issuing MST.............")
-  let issuingAddress = wallet.getAddress(0),
-      symbol = 'COOOL',
+  let issuingAddress = wallet.getAddress(2),
+      symbol = 'AABBCCDD',
       max_supply = 100000,
       precision = 8,
-      issuer = 'testguy3',
+      issuer = 'cangr',
       description = 'cool asset is cool';
-  //await issueMST(issuingAddress,symbol,max_supply,precision,issuer,description)
+  await issueMST(issuingAddress,symbol,max_supply,precision,issuer,description)
 
   console.log("Transferring MST.............")
   var target = {
@@ -225,8 +225,8 @@ async function issueMIT(issuer_avatar,symbol,content){
     ETP: 10000
   };
 
-  let recipient_address =  wallet.getAddress(0)
-  let change_address = wallet.getAddress(0)
+  let recipient_address =  wallet.getAddress(2)
+  let change_address = wallet.getAddress(2)
 
   let height = await blockchain.height()
   let txs = await blockchain.addresses.txs(wallet.getAddresses())

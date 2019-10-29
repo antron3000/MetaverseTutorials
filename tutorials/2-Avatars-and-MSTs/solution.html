@@ -46,15 +46,18 @@
     <table id="MSTBalancesTable">
       <th>Symbol</th>
       <th>Amount</th>
+      <th>Decimals</th>
+
 
     </table>
 
     <h3> Send MST </h3>
 
-    <label>MST</lable><select id="MSTSelect"></select><br>
+    <label>MST</lable><select id="MSTSelect" ></select><br>
 
-    <input placeholder ="sendTo"></input><br>
-    <input placeholder = "amount"></input><br>
+    <input placeholder ="sendTo" id="sendTo"></input><br>
+    <input placeholder = "amount" id="amount"></input><br>
+    <button onclick = "sendMST()">Send</button>
 
 
   </body>

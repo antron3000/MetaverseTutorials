@@ -1,8 +1,11 @@
-let mnemonic = "winter practice diagram kitten source man risk verify protect ship quick pistol brick runway penalty chest head purse device menu balance eight cube release"
+let mnemonic = "butter vacuum breeze glow virtual mutual veteran argue want pipe elite blast judge write sand toilet file joy exotic reflect truck topic receive wait"
 let wallet
 let addresses
 let blockchain
 let avatars
+
+let MSTsymbols
+let MSTInfo
 
 async function initialize(){
   blockchain = await Blockchain({url: "https://explorer-testnet.mvs.org/api/"})
@@ -14,6 +17,8 @@ async function initialize(){
   await populateAddressSelect()
   await showAvatars()
   await populateAvatarSelect()
+  await showMSTBalances()
+  await populateMSTSelect()
 
 }
 
@@ -39,11 +44,12 @@ async function registerAvatar() {
     console.log(tx)
 }
 
+
 async function issueMST(){
 
   var symbol = document.getElementById("MSTSymbol").value
-  var max_supply = document.getElementById("MSTSupply").value
-  var precision = document.getElementById("MSTDecimals").value
+  var max_supply = parseInt(document.getElementById("MSTSupply").value)
+  var precision = parseInt(document.getElementById("MSTDecimals").value)
   var description = document.getElementById("MSTDescription").value
   var avatarSelect = document.getElementById('avatarSelect');
 
@@ -54,7 +60,7 @@ async function issueMST(){
   var recipient_address = issuingAddress;
   var change_address = issuingAddress;
 
-  console.log(issuingAddress)
+  console.log("issuingAddress " + issuingAddress)
   console.log("symbol " + symbol)
   console.log("max_supply " + max_supply)
   console.log("precision " + precision)
@@ -62,32 +68,21 @@ async function issueMST(){
   console.log("issuer " + issuer)
   console.log("description " + description)
 
-  var recipient_address = issuingAddress;
-  var change_address = issuingAddress;
-
   let height = await blockchain.height()
   console.log(issuingAddress)
 
   let txs = await blockchain.addresses.txs(wallet.getAddresses())
   let utxos = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses()) //Get all utxo
   let result = await Metaverse.output.findUtxo(utxos, {}, height, 1000000000) //Collect utxo to pay for the fee of 10 ETP
-  console.log(result.utxo)
-
-  let tx = await Metaverse.transaction_builder.issueAsset(result.utxo, recipient_address, symbol, max_supply, precision, issuer, description, 0,false, change_address, result.change,false,0,'testnet')
-  console.log(tx);
-   tx = await wallet.sign(tx)
-   console.log(tx);
-
+  let tx = await Metaverse.transaction_builder.issueAsset(result.utxo, recipient_address, symbol, max_supply, precision, issuer, description, 0,false, change_address, result.change,true,0,'testnet',null,undefined)
+  tx = await wallet.sign(tx)
   tx = await tx.encode()
-  console.log(tx);
-
   tx = await tx.toString('hex')
-  console.log(tx);
-
   tx = await blockchain.transaction.broadcast(tx)
 
   console.log(tx);
 }
+
 
 async function transferMST() {
   // let height = await blockchain.height()
@@ -171,24 +166,45 @@ async function populateAvatarSelect() {
 }
 
 async function showMSTBalances() {
-  var balancesTable = document.getElementById("balancesTable");
-  let balances = await getMSTBalances(addresses)
+  var balancesTable = document.getElementById("MSTBalancesTable");
+  console.log(balancesTable)
+  let balanceData = await getMSTBalances(addresses)
+  console.log(balanceData)
 
-  for (i = 0; i < balances.length; ++i) {
+  MSTsymbols = Object.keys(balanceData.MST)
+  MSTInfo = Object.keys(balanceData.MST).map(i => balanceData.MST[i])
+
+  console.log(MSTsymbols)
+  console.log(MSTInfo)
+
+
+  for (i = 0; i < MSTInfo.length; ++i) {
 
     var row = balancesTable.insertRow(i+1);
 
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+
 
     // Add some text to the new cells:
-    cell1.innerHTML = addresses[i];
-    cell2.innerHTML = await getETPBalance([addresses[i]]);
+    cell1.innerHTML = MSTsymbols[i];
+    cell2.innerHTML = MSTInfo[i].available;
+    cell3.innerHTML = MSTInfo[i].decimals;
+
   }
+}
 
-  document.getElementById('totalBalance').innerHTML = "Total ETP: " + await getETPBalance(addresses)
+async function populateMSTSelect() {
+  let MSTselect = document.getElementById('MSTSelect');
+  for (i = 0; i < MSTsymbols.length; ++i) {
+   var opt = document.createElement("option");
+   opt.value= MSTsymbols[i];
+   opt.innerHTML = MSTsymbols[i];
 
+   MSTselect.appendChild(opt);
+ }
 }
 
 async function getMSTBalances(addressArray){
@@ -205,4 +221,32 @@ async function getMSTBalances(addressArray){
   let balances = await blockchain.balance.all(utxo, addressArray, height)
 
   return balances
+}
+
+
+async function sendMST(){
+  let recipient_address = document.getElementById("sendTo").value
+  let amount = document.getElementById("amount").value
+  amount = parseInt(amount)
+  recipient_address = await getAvatar(recipient_address)
+
+  var MSTSelect = document.getElementById('MSTSelect');
+
+  let TargetSymbol = MSTsymbols[MSTSelect.selectedIndex]
+  console.log(TargetSymbol)
+
+  var target = {};
+  target[TargetSymbol] = amount
+  console.log(target)
+
+  change_address = wallet.getAddress(0)
+  let height = await blockchain.height()
+  let txs = await blockchain.addresses.txs(wallet.getAddresses())
+  let utxos = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses()) //Get all utxo
+  let result = await Metaverse.output.findUtxo(utxos, target, height) //Collect utxo for given target
+  let tx = await Metaverse.transaction_builder.send(result.utxo, recipient_address, undefined, target, change_address, result.change)
+  tx = await wallet.sign(tx)
+  tx = await tx.encode()
+  tx = await blockchain.transaction.broadcast(tx.toString('hex'))
+  console.log(tx)
 }
