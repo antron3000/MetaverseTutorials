@@ -30,7 +30,7 @@ Note: Explicit detailed instructions are given to work with Metaverse, but not a
 
 Start by setting up a directory to work in
 
-```
+```bash
 cd MetaverseTutorials/tutorials/playground
 touch tut1.html
 touch tut1.js
@@ -40,8 +40,8 @@ Create front end
 
 Open tut1.html and use this HTML front end as the base of your app.
 
-```
-<<!DOCTYPE html>
+```html
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -81,7 +81,7 @@ You should now be set up to use the Metaverse javascript libraries. We are using
 
 First lets define some key variables
 
-```
+```javascript
 var wallet        //An object representing your Metaverse Wallet
 var mnemonic      //A mnemonic code word used to generate your Wallet
 var addresses     //An array containing addresses belonging to the wallet
@@ -91,7 +91,7 @@ var balances      //A JSON object containing Wallet balances
 
 Start by creating a function to generate a new mnemonic
 
-```
+```javascript
 async function generateMnemonic(){
   mnemonic = await Metaverse.wallet.generateMnemonic()
 }
@@ -101,7 +101,7 @@ async function generateMnemonic(){
 And a function to create a Wallet from the mnemonic, using the testnet keyword since we're on the testnet.
 
 
-```
+```javascript
 async function createWallet(){
   wallet  = await Metaverse.wallet.fromMnemonic(mnemonic,'testnet')
 
@@ -112,7 +112,7 @@ Once you've created a wallet you must get some testnet ETP from the testnet fauc
 
 A function to get Wallet balances
 
-```
+```javascript
 async function getETPBalance(){
 
   //Get the lastest Blockchain Length
@@ -136,7 +136,7 @@ async function getETPBalance(){
 
 And Finally a function to send ETP
 
-```
+```javascript
 
 async function sendETP(amount){
 
@@ -191,7 +191,7 @@ var mnemonic = "van juice oak general lyrics gravity hammer shield over eager cr
 
 ```
 
-```
+```javascript
 run()
 
 async function run(){
@@ -217,20 +217,20 @@ You should see an ETP balance, and a transaction hash in your terminal. You can 
 
 To interact with metaversejs in your webapp, you need to reference metaversejs in your HTML.
 
-```
+```html
 <script type="text/javascript" src="/dist/metaverse.min.js"></script>
 ```
 
 Also reference your tut1.js file.
 
-```
+```html
 <script type="text/javascript" src="tut1.js"></script>
 ```
 
 Next serve the webpage with
 
 
-```
+```python
 python -m SimpleHTTPServer 3333
 ```
 

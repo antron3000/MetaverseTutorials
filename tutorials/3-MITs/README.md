@@ -25,7 +25,7 @@ MIT's can be transferred between avatars. Only Avatars can issue MIT's
 
 First lets create an html front end
 
-```
+```html
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -75,7 +75,7 @@ First lets create an html front end
 
 Create a function to issue an MIT
 
-```
+```javascript
 let address = wallet.getAddress(1)
 let address2 = wallet.getAddress(0)
 console.log(address)
@@ -96,7 +96,7 @@ console.log(tx)
 
 Create a function to Transfer an MIT
 
-```
+```javascript
 let wallet = await Metaverse.wallet.fromMnemonic(mnemonic, 'testnet')
 let address = wallet.getAddress(0)
 let height = await blockchain.height()
@@ -126,13 +126,13 @@ Integrate into your Dapp
 
 To interact with metaversejs in your webapp, you need to reference metaversejs in your HTML.
 
-```
+```html
 <script type="text/javascript" src="/dist/metaverse.min.js"></script>
 ```
 
 Also reference your tut3.js file.
 
-```
+```html
 <script type="text/javascript" src="tut3.js"></script>
 ```
 

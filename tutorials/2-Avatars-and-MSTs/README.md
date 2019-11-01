@@ -27,7 +27,7 @@ Avatar certifications
 
 First lets create an html front end
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -75,7 +75,7 @@ nodejs
 
 Create a function to register your avatar.
 
-```
+```javascript
 async function registerAvatar(avatar_name,avatar_address) {
 
     let change_address = avatar_address
@@ -101,7 +101,7 @@ Create a function to look up an avatar address
 
 Create a function to issue an MST
 
-```
+```javascript
 
 async function issueMST(issuer,symbol,max_supply,decimalPrecision,issuer,description){
 
@@ -126,7 +126,7 @@ async function issueMST(issuer,symbol,max_supply,decimalPrecision,issuer,descrip
 
 Create a function to get MST balance
 
-```
+```javascript
 
 async function getBalances(){
   let wallet = await Metaverse.wallet.fromMnemonic(mnemonic, 'testnet')
@@ -144,7 +144,7 @@ async function getBalances(){
 
 Create a function to transfer MST's
 
-```
+```javascript
 async function transferMST() {
   let height = await blockchain.height()
   let txs = await blockchain.addresses.txs(["tDZ5YMLJ3z6VbvAsX1c8oe9hJ2nND4jszz", "t85Hm2nYwQXrry2cVmEHPq8krRdJ7KYjmq"])
@@ -163,7 +163,7 @@ async function transferMST() {
 
 To interact with metaversejs in your webapp, you need to reference metaversejs in your HTML.
 
-```
+```html
 
 <script type="text/javascript" src="/dist/metaverse.min.js"></script>
 
@@ -171,7 +171,7 @@ To interact with metaversejs in your webapp, you need to reference metaversejs i
 
 Also reference your tut2.js file.
 
-```
+```html
 
 <script type="text/javascript" src="tut2.js"></script>
 
