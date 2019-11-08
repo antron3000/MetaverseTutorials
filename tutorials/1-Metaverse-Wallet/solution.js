@@ -100,20 +100,22 @@ async function populateAddressSelect() {
 
 async function sendETP(){
 
-  let amount = document.getElementById("sendAmount").innerHTML
+  let amount = document.getElementById("sendAmount").value
+
+
+  var recipient_address = document.getElementById("sendTo").value;
+  recipient_address = recipient_address.toString()
+  amount = parseInt(amount)
+  console.log(amount)
   var target = {
       ETP: amount
   };
-
-  var recipient_address = document.getElementById("sendTo").innerHTML;
-
-  console.log(amount)
   console.log(recipient_address)
   let height = await blockchain.height()
   let txs = await blockchain.addresses.txs(addresses)
 
   //Get all utxo
-  let utxos = await Metaverse.output.calculateUtxo(txs.transactions, wallet.getAddresses())
+  let utxos = await Metaverse.output.calculateUtxo(txs.transactions, addresses)
 
   //Collect utxo for given target
   let result = await Metaverse.output.findUtxo(utxos, target, height)

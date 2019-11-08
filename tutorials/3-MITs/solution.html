@@ -8,15 +8,16 @@
     <script src="solution.js"></script>
     <script> initialize()</script>
   </head>
-  <body>
+  <body onload="initialize()">
 
+  <body>
     <h3> Issue MIT </h3>
 
     <input placeholder = "MIT Symbol" ></input><br>
     <input placeholder = "Content" ></input><br>
     <select id="avatarSelect">Avatar</select><br>
     <label placeholder = "recipient Address" ></label>
-
+    <button>Issue</button>
 
     <h3> Display MITs</h3>
 
@@ -24,7 +25,6 @@
     <th>Issuer</th>
     <th>Symbol</th>
     <th>Content</th>
-
 
     <h3> Transfer MIT </h3>
 
@@ -36,9 +36,7 @@
 
     <label>upload</label><br>
     <select>MIT</select><br>
-
     <button>Verify</button>
-
 
   </body>
 </html>

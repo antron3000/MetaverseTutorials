@@ -19,7 +19,6 @@ async function initialize(){
   await populateAvatarSelect()
   await showMSTBalances()
   await populateMSTSelect()
-
 }
 
 async function registerAvatar() {
@@ -94,8 +93,6 @@ async function transferMST() {
   // tx = await tx.encode())
   // tx = await blockchain.transaction.broadcast(tx.toString('hex')))
 }
-
-
 
 async function showAvatar() {
   let avatar = document.getElementById("getAvatarInput").value
@@ -186,7 +183,6 @@ async function showMSTBalances() {
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-
 
     // Add some text to the new cells:
     cell1.innerHTML = MSTsymbols[i];
