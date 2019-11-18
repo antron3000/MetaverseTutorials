@@ -6,7 +6,6 @@
     <script src="metaverse.min.js"></script>
     <script src="index.min.js"></script>
     <script src="solution.js"></script>
-
   </head>
   <body onload="initialize()">
 
@@ -32,7 +31,7 @@
 
     <h3> Issue MST </h3>
 
-    <label>From Avatar</lable><select id="avatarSelect" ></select><br>
+    <label>From Avatar: </label><select id="avatarSelect" ></select><br>
 
     <input id="MSTSymbol" placeholder="symbol"></input> <br>
     <input id="MSTSupply" placeholder="max_supply"></input> <br>
@@ -46,15 +45,18 @@
     <table id="MSTBalancesTable">
       <th>Symbol</th>
       <th>Amount</th>
+      <th>Decimals</th>
+
 
     </table>
 
     <h3> Send MST </h3>
 
-    <label>MST</lable><select id="MSTSelect"></select><br>
+    <label>MST</lable><select id="MSTSelect" ></select><br>
 
-    <input placeholder ="sendTo"></input><br>
-    <input placeholder = "amount"></input><br>
+    <input placeholder ="sendTo" id="sendTo"></input><br>
+    <input placeholder = "amount" id="amount"></input><br>
+    <button onclick = "sendMST()">Send</button>
 
 
   </body>

@@ -25,7 +25,7 @@ let results = await Promise.all([
                       type: "mit"
                   })
               ])
-let tx = await Metaverse.transaction_builder.transferMIT(results[0].utxo.concat(results[1]), "nova", recipient_address, recipient_avatar, "MIT_SUPERNOVA", change_address, results[0].change))
+let tx = await Metaverse.transaction_builder.transferMIT(results[0].utxo.concat(results[1]), "nova", recipient_address, recipient_avatar, "MIT_SUPERNOVA", change_address, results[0].change)
 tx = await wallet.sign(tx))
 tx = await tx.encode())
 tx = await blockchain.transaction.broadcast(tx.toString('hex')))

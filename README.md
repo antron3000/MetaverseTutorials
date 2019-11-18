@@ -128,8 +128,7 @@ and add
 
 ```
 
-
-To interact with webapps you must generate "index.js" from mvs-blockchain-js and "metaverse.min.js" from metaversejs. To generate these files you must clone each repository and simply run
+To interact with webapps you must generate "index.js" from mvs-blockchain-js and "metaverse.min.js" from metaversejs. To generate these files you must clone each repository separately, namely [metaversjs](https://github.com/canguruhh/metaversejs) and [mvs-blockchain-js](https://github.com/mvs-org/mvs-blockchain-js) and simply run
 
 ```bash
 grunt

@@ -4,41 +4,44 @@
     <meta charset="utf-8">
     <title></title>
     <script src="metaverse.min.js"></script>
-    <script src ="index.min.js"></script>
+    <script src="index.min.js"></script>
     <script src="solution.js"></script>
-    <script> initialize()</script>
   </head>
-  <body>
+  <body onload="initialize()">
 
+  <body>
     <h3> Issue MIT </h3>
 
-    <input placeholder = "MIT Symbol" ></input><br>
-    <input placeholder = "Content" ></input><br>
-    <select id="avatarSelect">Avatar</select><br>
+    <input id="MITSymbol" placeholder = "MIT Symbol" ></input><br>
+    <input id="MITContent" placeholder = "Content" ></input><br>
+    <label>Issuing Avatar: </label><select id="avatarSelect"></select><br>
     <label placeholder = "recipient Address" ></label>
-
+    <button onclick="issueMIT()">Issue</button>
 
     <h3> Display MITs</h3>
 
-    <th>MST</th>
-    <th>Issuer</th>
-    <th>Symbol</th>
-    <th>Content</th>
+
+    <table id="MITTable">
+      <th>Symbol</th>
+      <th>Content</th>
+      <th>Owner</th>
+      <th>Address</th>
+      <th>Status</th>
+
+    </table>
 
 
     <h3> Transfer MIT </h3>
 
-    <select>MIT</select><br>
-    <input>AVATAR</input><br>
-    <button>Send</button><br>
+    <label>MIT: </label><select id="MITSelect">MIT</select><br>
+    <input id="sendTo" placeholder = "send To...."></input><br>
+    <button onclick = "sendMIT()">Send</button><br>
 
     <h3> Verify File </h3>
 
     <label>upload</label><br>
     <select>MIT</select><br>
-
     <button>Verify</button>
-
 
   </body>
 </html>
