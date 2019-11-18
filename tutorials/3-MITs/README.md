@@ -86,7 +86,7 @@ Create a function to issue an MIT
 
 async function issueMIT(symbol, content,issuer_avatar){
 
-  var target = {
+  let target = {
     ETP: 10000
   };
 
@@ -105,7 +105,7 @@ async function issueMIT(symbol, content,issuer_avatar){
   tx = await wallet.sign(tx)
   tx = await tx.encode()
   tx = await blockchain.transaction.broadcast(tx.toString('hex'))
-                // .then(tx=>tx.toString('hex'))
+                
   console.log(tx)
 
 }

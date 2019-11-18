@@ -19,9 +19,7 @@ MST's and MIT's can only be issued by Avatars
 For more info: https://medium.com/metaverse-blockchain/metaverse-explained-avatars-57be355d42d4
 
 MST's are Metaverse Smart Tokens. MST is Metaverse's fungible token standard. MST's can be seen as subcurrencies on the Metaverse Blockchain.
-It costs 10 ETP to create an MST. MST's must be issued by an avatar.
-
-Avatar certifications
+It costs 10 ETP to create an MST. MST's must be issued by an avatar. MST SYMBOLS MUST BE ALL CAPS!
 
 ## Hands on Tutorial
 
@@ -100,15 +98,16 @@ return avatarInfo.address
 ```
 
 
-Create a function to issue an MST
+Create a function to issue an MST.
+
 
 ```javascript
 
 async function issueMST(issuer,symbol,max_supply,decimalPrecision,description){
 
   let issuingAddress = await getAvatar(issuer)
-  var recipient_address = issuingAddress;
-  var change_address = issuingAddress;
+  let recipient_address = issuingAddress;
+  let change_address = issuingAddress;
 
   let height = await blockchain.height()
   console.log(issuingAddress)
@@ -157,7 +156,7 @@ async function transferMST(amount,recipient_address,MSTSymbol) {
   recipient_address = await getAvatar(recipient_address)
 
 
-  var target = {};
+  let target = {};
   target[MSTSymbol] = amount
   console.log(target)
 

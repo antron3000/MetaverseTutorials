@@ -25,7 +25,7 @@ async function issueMIT(){
 
   let symbol = document.getElementById("MITSymbol").value
   let content = document.getElementById("MITContent").value
-  var target = {
+  let target = {
     ETP: 10000
   };
 
@@ -96,21 +96,21 @@ async function sendMIT(){
 
 
 async function showMITBalances() {
-  var MITTable = document.getElementById("MITTable");
+  let MITTable = document.getElementById("MITTable");
   console.log(MITTable)
   let balanceData = await getBalanceData(addresses)
   MITData = balanceData.MIT
   console.log(MITData)
 
   for (i = 0; i < MITData.length; ++i) {
-    var row = MITTable.insertRow(i+1);
+    let row = MITTable.insertRow(i+1);
 
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+    let cell4 = row.insertCell(3);
+    let cell5 = row.insertCell(4);
 
     // Add some text to the new cells:
     cell1.innerHTML = MITData[i].symbol;
@@ -124,7 +124,7 @@ async function showMITBalances() {
 async function populateMITSelect() {
   let MITselect = document.getElementById('MITSelect');
   for (i = 0; i < MITData.length; ++i) {
-   var opt = document.createElement("option");
+   let opt = document.createElement("option");
    opt.value= i;
    opt.innerHTML = MITData[i].symbol;
 
@@ -151,7 +151,7 @@ async function getBalanceData(addressArray){
 async function populateAvatarSelect() {
   let avatarSelect = document.getElementById('avatarSelect');
   for (i = 0; i < avatars.length; ++i) {
-   var opt = document.createElement("option");
+   let opt = document.createElement("option");
    opt.value= avatars[i].symbol;
    opt.innerHTML = avatars[i].symbol;
 

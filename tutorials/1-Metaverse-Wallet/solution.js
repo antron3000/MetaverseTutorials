@@ -3,12 +3,12 @@
 //     url: "https://explorer-testnet.mvs.org/api/"
 // });
 
-var wallet
-var mnemonic
-var addresses
-var balances
+let wallet
+let mnemonic
+let addresses
+let balances
 
-var hidden = true
+let hidden = true
 
 async function initialize(){
   blockchain = await Blockchain({url: "https://explorer-testnet.mvs.org/api/"})
@@ -39,15 +39,15 @@ async function importWallet() {
 
 async function showBalances(){
 
-  var balancesTable = document.getElementById("balancesTable");
+  let balancesTable = document.getElementById("balancesTable");
 
   for (i = 0; i < addresses.length; ++i) {
 
-    var row = balancesTable.insertRow(i+1);
+    let row = balancesTable.insertRow(i+1);
 
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
 
     // Add some text to the new cells:
     cell1.innerHTML = addresses[i];
@@ -90,7 +90,7 @@ async function populateAddressSelect() {
   addressSelect.appendChild(anyOption)
 
   for (i = 0; i < addresses.length; ++i) {
-   var opt = document.createElement("option");
+   let opt = document.createElement("option");
    opt.value= [addresses[i]];
    opt.innerHTML = addresses[i];
 
@@ -103,11 +103,11 @@ async function sendETP(){
   let amount = document.getElementById("sendAmount").value
 
 
-  var recipient_address = document.getElementById("sendTo").value;
+  let recipient_address = document.getElementById("sendTo").value;
   recipient_address = recipient_address.toString()
   amount = parseInt(amount)
   console.log(amount)
-  var target = {
+  let target = {
       ETP: amount
   };
   console.log(recipient_address)

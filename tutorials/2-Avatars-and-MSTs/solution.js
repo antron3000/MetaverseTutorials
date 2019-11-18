@@ -25,7 +25,7 @@ async function registerAvatar() {
 
     let avatar_name = document.getElementById("avatarName").value
 
-    var addressSelect = document.getElementById('addressSelect');
+    let addressSelect = document.getElementById('addressSelect');
     let avatar_address = addressSelect[addressSelect.selectedIndex].value
     console.log(avatar_name)
     console.log(avatar_address)
@@ -46,18 +46,18 @@ async function registerAvatar() {
 
 async function issueMST(){
 
-  var symbol = document.getElementById("MSTSymbol").value
-  var max_supply = parseInt(document.getElementById("MSTSupply").value)
-  var precision = parseInt(document.getElementById("MSTDecimals").value)
-  var description = document.getElementById("MSTDescription").value
-  var avatarSelect = document.getElementById('avatarSelect');
+  let symbol = document.getElementById("MSTSymbol").value
+  let max_supply = parseInt(document.getElementById("MSTSupply").value)
+  let precision = parseInt(document.getElementById("MSTDecimals").value)
+  let description = document.getElementById("MSTDescription").value
+  let avatarSelect = document.getElementById('avatarSelect');
 
   let issuer = avatarSelect[avatarSelect.selectedIndex].value
   console.log(issuer)
   let issuingAddress = await getAvatar(issuer)
   issuingAddress = issuingAddress.toString()
-  var recipient_address = issuingAddress;
-  var change_address = issuingAddress;
+  let recipient_address = issuingAddress;
+  let change_address = issuingAddress;
 
   console.log("issuingAddress " + issuingAddress)
   console.log("symbol " + symbol)
@@ -111,7 +111,7 @@ async function getAvatar(avatar) {
 async function populateAddressSelect() {
   let addressSelect = document.getElementById('addressSelect');
   for (i = 0; i < addresses.length; ++i) {
-   var opt = document.createElement("option");
+   let opt = document.createElement("option");
    opt.value= [addresses[i]];
    opt.innerHTML = addresses[i];
 
@@ -130,7 +130,7 @@ async function getAvatars() {
 
 async function showAvatars() {
 
-  var avatarTable = document.getElementById("avatarsTable");
+  let avatarTable = document.getElementById("avatarsTable");
   for (let i = 0; i < avatars.length; ++i) {
      let avatarAddress = avatars[i].address
      let avatarSymbol = avatars[i].symbol
@@ -138,11 +138,11 @@ async function showAvatars() {
      //let issue_tx_link = document.createElement("div")
      //issue_tx_link.innerText = "Issuance tx"
      //issue_tx_link.setAttribute("href", "https://explorer-testnet.mvs.org/tx/" + issue_tx)
-     var row = avatarTable.insertRow(i+1);
+     let row = avatarTable.insertRow(i+1);
 
      // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-     var cell1 = row.insertCell(0);
-     var cell2 = row.insertCell(1);
+     let cell1 = row.insertCell(0);
+     let cell2 = row.insertCell(1);
 
      // Add some text to the new cells:
      cell1.innerHTML = avatarSymbol;
@@ -154,7 +154,7 @@ async function showAvatars() {
 async function populateAvatarSelect() {
   let avatarSelect = document.getElementById('avatarSelect');
   for (i = 0; i < avatars.length; ++i) {
-   var opt = document.createElement("option");
+   let opt = document.createElement("option");
    opt.value= avatars[i].symbol;
    opt.innerHTML = avatars[i].symbol;
 
@@ -163,7 +163,7 @@ async function populateAvatarSelect() {
 }
 
 async function showMSTBalances() {
-  var balancesTable = document.getElementById("MSTBalancesTable");
+  let balancesTable = document.getElementById("MSTBalancesTable");
   console.log(balancesTable)
   let balanceData = await getMSTBalances(addresses)
   console.log(balanceData)
@@ -177,12 +177,12 @@ async function showMSTBalances() {
 
   for (i = 0; i < MSTInfo.length; ++i) {
 
-    var row = balancesTable.insertRow(i+1);
+    let row = balancesTable.insertRow(i+1);
 
     // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
 
     // Add some text to the new cells:
     cell1.innerHTML = MSTsymbols[i];
@@ -195,7 +195,7 @@ async function showMSTBalances() {
 async function populateMSTSelect() {
   let MSTselect = document.getElementById('MSTSelect');
   for (i = 0; i < MSTsymbols.length; ++i) {
-   var opt = document.createElement("option");
+   let opt = document.createElement("option");
    opt.value= MSTsymbols[i];
    opt.innerHTML = MSTsymbols[i];
 
@@ -226,12 +226,12 @@ async function sendMST(){
   amount = parseInt(amount)
   recipient_address = await getAvatar(recipient_address)
 
-  var MSTSelect = document.getElementById('MSTSelect');
+  let MSTSelect = document.getElementById('MSTSelect');
 
   let TargetSymbol = MSTsymbols[MSTSelect.selectedIndex]
   console.log(TargetSymbol)
 
-  var target = {};
+  let target = {};
   target[TargetSymbol] = amount
   console.log(target)
 

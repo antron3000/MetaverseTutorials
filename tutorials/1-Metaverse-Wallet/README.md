@@ -78,16 +78,15 @@ Open tut1.html and use this HTML front end as the base of your app.
 ```
 
 
-
 You should now be set up to use the Metaverse javascript libraries. We are using the async/await syntax. The await keyword can only be used in async functions so we will create async functions to perform all actions.
 
 First lets define some key variables
 
 ```javascript
-var wallet        //An object representing your Metaverse Wallet
-var mnemonic      //A mnemonic code word used to generate your Wallet
-var addresses     //An array containing addresses belonging to the wallet
-var balances      //A JSON object containing Wallet balances
+let wallet        //An object representing your Metaverse Wallet
+let mnemonic      //A mnemonic code word used to generate your Wallet
+let addresses     //An array containing addresses belonging to the wallet
+let balances      //A JSON object containing Wallet balances
 
 ```
 
@@ -144,12 +143,12 @@ async function sendETP(amount){
 
 //Define the amount of ETP you want to send
 //Measured in ETP units. There are 100 million units per ETP.
-  var target = {
+  let target = {
       ETP: 100000000 //100 million units = 1 ETP
   };
 
   //Define recipient
-  var recipient_address = "MVbtobP4m44AKsx5PqBbtrBUdycNHxM3eQ";
+   recipient_address = "MVbtobP4m44AKsx5PqBbtrBUdycNHxM3eQ";
 
   //Get latest blockchain length
   let height = await blockchain.height()
@@ -189,7 +188,7 @@ To test your nodejs code, Create a function called run() and make sure it gets e
 For now, since the metaverse faucet is not operational, use this mnemonic:
 
 ```
-var mnemonic = "van juice oak general lyrics gravity hammer shield over eager crew volume survey join lonely purchase kitten artwork mass cousin process mixture add knife"
+let mnemonic = "van juice oak general lyrics gravity hammer shield over eager crew volume survey join lonely purchase kitten artwork mass cousin process mixture add knife"
 
 ```
 
@@ -233,7 +232,7 @@ Next serve the webpage with
 
 
 ```python
-python -m SimpleHTTPServer 3333
+python -m SimpleHTTPServer 4444
 ```
 
 or however you prefer.
