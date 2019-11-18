@@ -5,30 +5,30 @@ This is a Metaverse Tutorial series
 
 This is a series of Metaverse tutorials. To begin clone this repository
 
-```
+```bash
 git clone https://github.com/antron3000/MetaverseTutorials.git
 
 ```
 
 navigate to the tutorial directory
 
-```
+```bash
 cd MetaverseTutorials
 ```
 
 update your repo to the latest version of mvs-blockchain-js
-```
+```bash
 git submodule update --init --recursive
 ```
 
 Install the metaverse npm package
 
-```
+```bash
 npm install metaversejs --save
 ```
 
 Install the mvs-blockchain-js npm package
-```
+```bash
 cd mvs-blockchain-js && npm install
 ```
 
@@ -65,7 +65,7 @@ Please follow the Environment setup instructions below before starting.
 
 Start by entering the "playground" directory. This is where you can build ALL your Metaverse apps during the tutorial.
 
-```
+```bash
 cd tutorials/playground
 ```
 
@@ -82,7 +82,7 @@ For use in nodejs scripts, import mvs-blockchain from the mvs-blockchain folder,
 
 Inside the testscript, add:
 
-```
+```javascript
 //import mvs-blockchain-js
 let blockchain = require('../../mvs-blockchain-js')({
     url: "https://explorer-testnet.mvs.org/api/"
@@ -102,20 +102,20 @@ console.log("Metaversjs has been successfully imported!")
 
 now run
 
-```
+```bash
 node testScript.js
 ```
 
 **Interact with metaverse via webapp**
 
 First create an html file
-```
+```bash
 touch index.html
 ```
 
 and add
 
-```
+```html
 <html>
   <head>
     <meta charset="utf-8">
@@ -130,25 +130,25 @@ and add
 
 To interact with webapps you must generate "index.js" from mvs-blockchain-js and "metaverse.min.js" from metaversejs. To generate these files you must clone each repository separately, namely [metaversjs](https://github.com/canguruhh/metaversejs) and [mvs-blockchain-js](https://github.com/mvs-org/mvs-blockchain-js) and simply run
 
-```
+```bash
 grunt
 ```
 
 This will generate javascript files into the /dist folder that you can import into your app.  You don't have to worry about this for now. We have generated these files and placed them in the playground folder. To include them in your webapp just add these script tags into your html page.
 
-```
+```html
 <script src = "metaverse.min.js"></script>
 <script src = "index.min.js"></script>
 ```
 
 Serve your webpage
-```
+```python
 python -m SimpleHTTPServer 4444
 ```
 
 To test that the libraries have been successfully imported into your webpage, open the web console and enter
 
-```
+```javascript
 blockchain = await Blockchain({url: "https://explorer-testnet.mvs.org/api/"})
 
 blockchain
