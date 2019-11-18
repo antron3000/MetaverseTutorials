@@ -110,7 +110,7 @@ async function createWallet(){
   addresses = await wallet.getAddresses()  // get list of addresses
 }
 ```
-Once you've created a wallet you must get some testnet ETP from the [testnet faucet](https://free.mvs.org/.
+Once you've created a wallet you must get some testnet ETP from the [testnet faucet](https://free.mvs.org/).
 
 A function to get Wallet balances
 
